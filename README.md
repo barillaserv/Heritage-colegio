@@ -10,14 +10,28 @@ Tema WordPress para el sitio del colegio. Diseño minimalista, responsive y tota
 colegio-theme/
 ├── header.php            # DOCTYPE, <head>, wp_head(), header con logo + nav + botón
 ├── footer.php            # Footer: logo, menú, redes sociales, wp_footer(), </body></html>
-├── index.php             # Template: Página de Inicio (Hero, Sobre la escuela, Programas)
+├── index.php             # Template: Página de Inicio (Secciones 1–7)
 ├── page-contacto.php     # Template: Página de Contacto (formulario de admisiones)
 ├── functions.php         # Setup del tema + Menús nativos + Customizer + proxy AJAX Zapier
 ├── style.css             # Todos los estilos del tema
-├── script.js             # JS: scroll header, menú hamburguesa, envío formulario vía AJAX
+├── script.js             # JS: scroll header, menú hamburguesa, sliders, carrusel, formulario AJAX
 ├── hero-bg.jpg           # Imagen fallback para el fondo del Hero
 └── programs-bg.jpg       # Imagen fallback para el fondo de Programas
 ```
+
+---
+
+## Secciones de la Página de Inicio (`index.php`)
+
+| N° | Nombre              | Clase CSS principal   | Descripción breve                                     |
+|----|---------------------|-----------------------|-------------------------------------------------------|
+| 1  | Hero                | `.hero-section`       | Imagen full-screen + texto centrado + botón admisiones |
+| 2  | Sobre nosotros      | `.about-section`      | Slider de 3 slides (imagen + card superpuesta)        |
+| 3  | Nuestros Valores    | `.valores-section`    | Imagen fija izq + slider 2 slides + caja descripción  |
+| 4  | Modelo Educativo    | `.modelo-section`     | Título + banner imagen + barra oscura CTA             |
+| 5  | Niveles Académicos  | `.niveles-section`    | Grid de 3 cards con hover de elevación                |
+| 6  | Nuestro Campus      | `.campus-section`     | Carrusel full-width auto-rotate (fondo mitad navy/blanco) |
+| 7  | Programas           | `.programs-section`   | Fondo imagen + 3 boxes + botón CTA                    |
 
 ---
 
@@ -45,7 +59,59 @@ Página de Inicio                             panel: colegio_panel_inicio
 │   ├── Texto — Botón Admisiones             setting: colegio_hero_admisiones_texto
 │   └── URL — Botón Admisiones              setting: colegio_hero_admisiones_url
 │
-└── Sección 3 — Programas                    section: colegio_inicio_programas
+├── Sección 2 — Sobre nosotros               section: colegio_inicio_sobre
+│   ├── Título de la sección                 setting: colegio_sobre_titulo
+│   ├── Descripción de la sección            setting: colegio_sobre_descripcion
+│   ├── Slide 1 — Imagen                     setting: colegio_sobre_slide1_imagen
+│   ├── Slide 1 — Título                     setting: colegio_sobre_slide1_titulo
+│   ├── Slide 1 — Descripción                setting: colegio_sobre_slide1_descripcion
+│   ├── Slide 1 — URL de la flecha           setting: colegio_sobre_slide1_url
+│   ├── Slide 2 — (ídem)                     setting: colegio_sobre_slide2_*
+│   └── Slide 3 — (ídem)                     setting: colegio_sobre_slide3_*
+│
+├── Sección 3 — Nuestros Valores             section: colegio_inicio_valores
+│   ├── Título de la sección                 setting: colegio_valores_titulo
+│   ├── Imagen izquierda (fija)              setting: colegio_valores_imagen_izq
+│   ├── Slide 1 — Imagen de la tarjeta       setting: colegio_valores_slide1_imagen
+│   ├── Slide 1 — Título                     setting: colegio_valores_slide1_titulo
+│   ├── Slide 1 — Descripción                setting: colegio_valores_slide1_descripcion
+│   ├── Slide 2 — Imagen de la tarjeta       setting: colegio_valores_slide2_imagen
+│   ├── Slide 2 — Título                     setting: colegio_valores_slide2_titulo
+│   └── Slide 2 — Descripción                setting: colegio_valores_slide2_descripcion
+│
+├── Sección 4 — Modelo Educativo             section: colegio_inicio_modelo
+│   ├── Título de la sección                 setting: colegio_modelo_titulo
+│   ├── Banner — Imagen de fondo             setting: colegio_modelo_banner_bg
+│   ├── Banner — Texto                       setting: colegio_modelo_banner_texto
+│   ├── Banner — Texto del botón             setting: colegio_modelo_banner_btn_texto
+│   ├── Banner — URL del botón               setting: colegio_modelo_banner_btn_url
+│   ├── Barra — Logo / ícono                 setting: colegio_modelo_barra_logo
+│   ├── Barra — Título                       setting: colegio_modelo_barra_titulo
+│   ├── Barra — Descripción                  setting: colegio_modelo_barra_descripcion
+│   ├── Barra — Texto del botón              setting: colegio_modelo_barra_btn_texto
+│   └── Barra — URL del botón                setting: colegio_modelo_barra_btn_url
+│
+├── Sección 5 — Niveles Académicos           section: colegio_inicio_niveles
+│   ├── Título de la sección                 setting: colegio_niveles_titulo
+│   ├── Card 1 — Imagen                      setting: colegio_niveles_card1_imagen
+│   ├── Card 1 — Título                      setting: colegio_niveles_card1_titulo
+│   ├── Card 1 — Subtítulo                   setting: colegio_niveles_card1_subtitulo
+│   ├── Card 1 — Descripción                 setting: colegio_niveles_card1_descripcion
+│   ├── Card 1 — URL de la flecha            setting: colegio_niveles_card1_url
+│   ├── Card 2 — (ídem)                      setting: colegio_niveles_card2_*
+│   └── Card 3 — (ídem)                      setting: colegio_niveles_card3_*
+│
+├── Sección 6 — Nuestro Campus               section: colegio_inicio_campus
+│   ├── Etiqueta superior                    setting: colegio_campus_label
+│   ├── Título                               setting: colegio_campus_titulo
+│   ├── Slide 1 — Imagen                     setting: colegio_campus_slide1_imagen
+│   ├── Slide 1 — Título                     setting: colegio_campus_slide1_titulo
+│   ├── Slide 1 — Texto del botón            setting: colegio_campus_slide1_btn_texto
+│   ├── Slide 1 — URL del botón              setting: colegio_campus_slide1_btn_url
+│   ├── Slide 2 — (ídem)                     setting: colegio_campus_slide2_*
+│   └── Slide 3 — (ídem)                     setting: colegio_campus_slide3_*
+│
+└── Sección 7 — Programas                    section: colegio_inicio_programas
     ├── Imagen de fondo                      setting: colegio_programs_bg
     ├── Logo / sello superpuesto             setting: colegio_programs_logo
     └── URL — Botón "Solicita más info"      setting: colegio_info_url
@@ -102,11 +168,13 @@ $wp_customize->add_panel( 'colegio_panel_ejemplo', array(
 ```php
 // ── Sección: Banner ─────────────────────────────────────────────
 $wp_customize->add_section( 'colegio_ejemplo_banner', array(
-    'title'    => __( 'Sección Banner', 'colegio-theme' ),
+    'title'    => __( 'Sección 1 — Banner', 'colegio-theme' ),
     'panel'    => 'colegio_panel_ejemplo',
     'priority' => 10,
 ) );
 ```
+
+> El título siempre lleva número: `'Sección N — Nombre'` para identificar fácilmente en el Personalizador.
 
 ### Paso 3 — Registrar los settings y controles de cada sección
 
@@ -120,6 +188,19 @@ $wp_customize->add_control( 'colegio_ejemplo_banner_titulo', array(
     'label'   => __( 'Título del banner', 'colegio-theme' ),
     'section' => 'colegio_ejemplo_banner',
     'type'    => 'text',
+) );
+```
+
+**Textarea:**
+```php
+$wp_customize->add_setting( 'colegio_ejemplo_banner_desc', array(
+    'default'           => '',
+    'sanitize_callback' => 'sanitize_textarea_field',
+) );
+$wp_customize->add_control( 'colegio_ejemplo_banner_desc', array(
+    'label'   => __( 'Descripción', 'colegio-theme' ),
+    'section' => 'colegio_ejemplo_banner',
+    'type'    => 'textarea',
 ) );
 ```
 
@@ -236,12 +317,14 @@ Formulario (JS fetch) → admin-ajax.php → colegio_enviar_contacto_ajax() → 
   ```
 - Colores del tema:
 
-  | Token           | Valor     | Uso principal                 |
-  |-----------------|-----------|-------------------------------|
-  | Azul oscuro     | `#1A2F3D` | Fondo footer, íconos sociales |
-  | Azul medio      | `#1a365d` | Botones, títulos              |
-  | Azul claro      | `#98D5E9` | Botón CTA, acentos            |
-  | Azul hover icon | `#e8f0fe` | Hover íconos sociales         |
+  | Token           | Valor     | Uso principal                          |
+  |-----------------|-----------|----------------------------------------|
+  | Azul navy       | `#1A2F3D` | Fondo footer, barra Modelo, campus     |
+  | Azul medio      | `#1a365d` | Títulos, botones, textos principales   |
+  | Azul claro      | `#98D5E9` | Flechas, acentos, botón CTA hover      |
+  | Azul admisiones | `#96D3E8` | Botón "Admisiones Abiertas" del Hero   |
+  | Dorado          | `#c9b87a` | Botón "Conoce Más" y botones Campus    |
+  | Azul hover icon | `#e8f0fe` | Hover íconos sociales footer           |
 
 ### Íconos SVG (footer)
 - Todos en `viewBox="0 0 24 24"` sin `width`/`height` — el tamaño lo controla CSS.
@@ -270,3 +353,5 @@ Cada archivo de template debe ser autónomo en sus etiquetas:
 - El texto **"Desarrollado por NAFTA. 2026"** es fijo (no editable desde el Personalizador por decisión de diseño).
 - El header es transparente en la portada y se vuelve blanco (`rgba(255,255,255,0.95)`) al hacer scroll (`scrollY > 50px`).
 - El menú hamburguesa se activa en pantallas ≤ 900px.
+- Los títulos en negrilla cursiva (`font-weight: 800; font-style: italic`) son la identidad tipográfica principal del sitio.
+- Las secciones numeradas en el Personalizador **siempre llevan el número visual de su posición en la página** (ej. si la sección 2 no tiene controles, la siguiente visible es "Sección 3 — Nombre").
