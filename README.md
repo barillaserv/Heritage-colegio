@@ -1,6 +1,6 @@
 # Colegio Theme — Heritage American School
 
-Tema WordPress minimalista para la página principal del colegio.
+Tema WordPress para la página principal del colegio.
 
 ---
 
@@ -133,6 +133,19 @@ Formulario (JS fetch) → admin-ajax.php → colegio_enviar_contacto_ajax() → 
 
 ## Notas de diseño
 
-- El footer **siempre ocupa el 100% del ancho** (`width: 100vw`) aunque esté renderizado dentro de la sección `.programs-section` que tiene `max-width`.
-- El texto **"Desarrollado por NAFIA. 2020"** es fijo (no editable desde el Personalizador por decisión de diseño) y se alinea a la derecha.
+- El `footer.php` es **completamente independiente** — no cierra ni abre etiquetas de otras secciones. Se puede usar con `get_footer()` en cualquier template.
+- El footer **siempre ocupa el 100% del ancho** (`width: 100vw`) sin importar el contenedor padre.
+- El texto **"Desarrollado por NAFTA. 2026"** es fijo (no editable desde el Personalizador por decisión de diseño) y se alinea a la derecha.
 - Los tamaños de fuente e iconos usan `clamp()` para escalar fluidamente entre móvil y escritorio sin breakpoints adicionales.
+
+## Regla importante: independencia de templates
+
+Cada archivo de template (`header.php`, `footer.php`, páginas) debe ser **autónomo**:
+
+| Archivo | Abre | Cierra |
+|---|---|---|
+| `header.php` | `<html>`, `<body>`, `<header>` nav | `</header>` |
+| `index.php` / cualquier page | Sus propias secciones | Sus propias secciones |
+| `footer.php` | `<footer>` | `</footer>`, `</body>`, `</html>` |
+
+**Nunca** poner en `footer.php` cierres de etiquetas que fueron abiertas en otro template.

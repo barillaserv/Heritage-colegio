@@ -92,8 +92,6 @@
             <div class="site-footer-developed">Desarrollado por NAFTA. 2026</div>
         </div>
     </footer>
-    </div>
-</section>
 
 <?php wp_footer(); ?>
 </body>
