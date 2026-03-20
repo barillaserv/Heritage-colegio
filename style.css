@@ -226,28 +226,173 @@ body {
     transform: translateY(-2px);
 }
 
-/* Sección About */
+/* ================================
+   Sección 2 — Sobre nosotros
+================================ */
 .about-section {
-    padding: 80px 40px;
+    padding: 80px 40px 60px;
     background: #fff;
     text-align: center;
 }
 
-.about-section .container {
-    max-width: 900px;
+.about-header {
+    max-width: 700px;
+    margin: 0 auto 52px;
 }
 
 .section-title {
-    font-size: 42px;
-    font-weight: bold;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 800;
     color: #1a365d;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .section-description {
-    font-size: 18px;
+    font-size: clamp(15px, 1.5vw, 18px);
     color: #666;
     line-height: 1.8;
+}
+
+/* Slider wrapper */
+.about-slider-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Cada slide */
+.about-slide {
+    display: none;
+}
+
+.about-slide.active {
+    display: block;
+}
+
+.about-slide-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 380px;
+}
+
+/* Imagen */
+.about-slide-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.about-slide-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Card de texto */
+.about-slide-card {
+    background: #f4f6f8;
+    padding: 48px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.about-slide-title {
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 800;
+    font-style: italic;
+    color: #1a365d;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.about-slide-desc {
+    font-size: clamp(14px, 1.3vw, 16px);
+    color: #444;
+    line-height: 1.75;
+    flex: 1;
+}
+
+.about-slide-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 24px;
+    color: #98D5E9;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.about-slide-arrow svg {
+    width: 32px;
+    height: 32px;
+    stroke: #98D5E9;
+}
+
+.about-slide-arrow:hover {
+    transform: translateX(4px);
+}
+
+/* Controles: prev · dots · next */
+.about-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.about-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: #aaa;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.about-nav svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+}
+
+.about-nav:hover {
+    color: #1a365d;
+}
+
+.about-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.about-dot {
+    background: #e2e8f0;
+    border: none;
+    border-radius: 50px;
+    width: 44px;
+    height: 44px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #aaa;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.about-dot.active {
+    background: #1a365d;
+    color: #fff;
 }
 
 /* Sección Programas */
@@ -532,6 +677,14 @@ body {
         font-size: 34px;
     }
 
+    .about-slide-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .about-slide-img {
+        min-height: 260px;
+    }
+
     .programs-container {
         grid-template-columns: 1fr;
     }
@@ -620,7 +773,11 @@ body {
 
     /* About */
     .about-section {
-        padding: 50px 20px;
+        padding: 50px 20px 40px;
+    }
+
+    .about-header {
+        margin-bottom: 32px;
     }
 
     .section-title {
@@ -631,6 +788,25 @@ body {
     .section-description {
         font-size: 15px;
         line-height: 1.7;
+    }
+
+    .about-slide-inner {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .about-slide-img {
+        min-height: 220px;
+    }
+
+    .about-slide-card {
+        padding: 32px 24px;
+    }
+
+    .about-dot {
+        width: 36px;
+        height: 36px;
+        font-size: 12px;
     }
 
     /* Programas */

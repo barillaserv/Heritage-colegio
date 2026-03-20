@@ -40,18 +40,18 @@ Global (Header / Footer)                     panel: colegio_panel_global
     └── Redes — URL LinkedIn                 setting: colegio_linkedin_url
 
 Página de Inicio                             panel: colegio_panel_inicio
-├── Sección Hero                             section: colegio_inicio_hero
+├── Sección 1 — Hero                         section: colegio_inicio_hero
 │   ├── Imagen de fondo                      setting: colegio_hero_bg
 │   ├── Texto — Botón Admisiones             setting: colegio_hero_admisiones_texto
 │   └── URL — Botón Admisiones              setting: colegio_hero_admisiones_url
 │
-└── Sección Programas                        section: colegio_inicio_programas
+└── Sección 3 — Programas                    section: colegio_inicio_programas
     ├── Imagen de fondo                      setting: colegio_programs_bg
     ├── Logo / sello superpuesto             setting: colegio_programs_logo
     └── URL — Botón "Solicita más info"      setting: colegio_info_url
 
 Página de Contacto                           panel: colegio_panel_contacto
-└── Sección Formulario                       section: colegio_contacto_formulario
+└── Sección 1 — Formulario                   section: colegio_contacto_formulario
     ├── Imagen superior                      setting: colegio_contacto_img_superior
     └── Imagen inferior                      setting: colegio_contacto_img_inferior
 

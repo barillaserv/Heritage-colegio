@@ -127,7 +127,7 @@ function colegio_customize_register( $wp_customize ) {
 
     // ── Sección: Hero ───────────────────────────────────────────────
     $wp_customize->add_section( 'colegio_inicio_hero', array(
-        'title'    => __( 'Sección Hero', 'colegio-theme' ),
+        'title'    => __( 'Sección 1 — Hero', 'colegio-theme' ),
         'panel'    => 'colegio_panel_inicio',
         'priority' => 10,
     ) );
@@ -164,9 +164,86 @@ function colegio_customize_register( $wp_customize ) {
         'type'    => 'url',
     ) );
 
+    // ── Sección: Sobre nosotros (Slider) ────────────────────────────
+    $wp_customize->add_section( 'colegio_inicio_sobre', array(
+        'title'    => __( 'Sección 2 — Sobre nosotros', 'colegio-theme' ),
+        'panel'    => 'colegio_panel_inicio',
+        'priority' => 15,
+    ) );
+
+    // Título y descripción general de la sección
+    $wp_customize->add_setting( 'colegio_sobre_titulo', array(
+        'default'           => 'Heritage American School',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_sobre_titulo', array(
+        'label'   => __( 'Título de la sección', 'colegio-theme' ),
+        'section' => 'colegio_inicio_sobre',
+        'type'    => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_sobre_descripcion', array(
+        'default'           => 'Nuestro enfoque combina rigor académico internacional, formación deportiva de alto nivel y tecnología del futuro. Formamos líderes con carácter firme, mentalidad global y raíces profundas en sus valores.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ) );
+    $wp_customize->add_control( 'colegio_sobre_descripcion', array(
+        'label'   => __( 'Descripción de la sección', 'colegio-theme' ),
+        'section' => 'colegio_inicio_sobre',
+        'type'    => 'textarea',
+    ) );
+
+    // Slides 1, 2 y 3
+    foreach ( range( 1, 3 ) as $n ) {
+        $wp_customize->add_setting( "colegio_sobre_slide{$n}_imagen", array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        if ( class_exists( 'WP_Customize_Image_Control' ) ) {
+            $wp_customize->add_control( new WP_Customize_Image_Control(
+                $wp_customize,
+                "colegio_sobre_slide{$n}_imagen_control",
+                array(
+                    'label'    => __( "Slide {$n} — Imagen", 'colegio-theme' ),
+                    'section'  => 'colegio_inicio_sobre',
+                    'settings' => "colegio_sobre_slide{$n}_imagen",
+                )
+            ) );
+        }
+
+        $wp_customize->add_setting( "colegio_sobre_slide{$n}_titulo", array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_sobre_slide{$n}_titulo", array(
+            'label'   => __( "Slide {$n} — Título", 'colegio-theme' ),
+            'section' => 'colegio_inicio_sobre',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_sobre_slide{$n}_descripcion", array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ) );
+        $wp_customize->add_control( "colegio_sobre_slide{$n}_descripcion", array(
+            'label'   => __( "Slide {$n} — Descripción", 'colegio-theme' ),
+            'section' => 'colegio_inicio_sobre',
+            'type'    => 'textarea',
+        ) );
+
+        $wp_customize->add_setting( "colegio_sobre_slide{$n}_url", array(
+            'default'           => '#',
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        $wp_customize->add_control( "colegio_sobre_slide{$n}_url", array(
+            'label'   => __( "Slide {$n} — URL de la flecha", 'colegio-theme' ),
+            'section' => 'colegio_inicio_sobre',
+            'type'    => 'url',
+        ) );
+    }
+
     // ── Sección: Programas ──────────────────────────────────────────
     $wp_customize->add_section( 'colegio_inicio_programas', array(
-        'title'    => __( 'Sección Programas', 'colegio-theme' ),
+        'title'    => __( 'Sección 3 — Programas', 'colegio-theme' ),
         'panel'    => 'colegio_panel_inicio',
         'priority' => 20,
     ) );
@@ -215,7 +292,7 @@ function colegio_customize_register( $wp_customize ) {
 
     // ── Sección: Formulario ─────────────────────────────────────────
     $wp_customize->add_section( 'colegio_contacto_formulario', array(
-        'title'    => __( 'Sección Formulario', 'colegio-theme' ),
+        'title'    => __( 'Sección 1 — Formulario', 'colegio-theme' ),
         'panel'    => 'colegio_panel_contacto',
         'priority' => 10,
     ) );

@@ -153,3 +153,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
+/* ================================
+   Slider — Sección 2 Sobre nosotros
+================================ */
+(function () {
+    const slides = Array.from(document.querySelectorAll('.about-slide'));
+    const dots   = Array.from(document.querySelectorAll('.about-dot'));
+    const prev   = document.getElementById('aboutPrev');
+    const next   = document.getElementById('aboutNext');
+
+    if (!slides.length) return;
+
+    let current = 0;
+
+    function goTo(index) {
+        slides[current].classList.remove('active');
+        dots[current] && dots[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current] && dots[current].classList.add('active');
+    }
+
+    prev && prev.addEventListener('click', () => goTo(current - 1));
+    next && next.addEventListener('click', () => goTo(current + 1));
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+}());
