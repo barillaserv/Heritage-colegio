@@ -10,7 +10,7 @@ Tema WordPress para el sitio del colegio. Diseño minimalista, responsive y tota
 colegio-theme/
 ├── header.php            # DOCTYPE, <head>, wp_head(), header con logo + nav + botón
 ├── footer.php            # Footer: logo, menú, redes sociales, wp_footer(), </body></html>
-├── index.php             # Template: Página de Inicio (Secciones 1–7)
+├── index.php             # Template: Página de Inicio (Secciones 1–9)
 ├── page-contacto.php     # Template: Página de Contacto (formulario de admisiones)
 ├── functions.php         # Setup del tema + Menús nativos + Customizer + proxy AJAX Zapier
 ├── style.css             # Todos los estilos del tema
@@ -31,7 +31,9 @@ colegio-theme/
 | 4  | Modelo Educativo    | `.modelo-section`     | Título + banner imagen + barra oscura CTA             |
 | 5  | Niveles Académicos  | `.niveles-section`    | Grid de 3 cards con hover de elevación                |
 | 6  | Nuestro Campus      | `.campus-section`     | Carrusel full-width auto-rotate (fondo mitad navy/blanco) |
-| 7  | Programas           | `.programs-section`   | Fondo imagen + 3 boxes + botón CTA                    |
+| 7  | Vida estudiantil    | `.vida-estudiantil-section` | Grid de cards imagen + texto                    |
+| 8  | Noticias y eventos  | `.noticias-eventos-section` | Noticias + lista de eventos                     |
+| 9  | Cierre / CTA        | `.programs-section`   | Foto de fondo + velo oscuro + titular y botón editables |
 
 ---
 
@@ -111,10 +113,11 @@ Página de Inicio                             panel: colegio_panel_inicio
 │   ├── Slide 2 — (ídem)                     setting: colegio_campus_slide2_*
 │   └── Slide 3 — (ídem)                     setting: colegio_campus_slide3_*
 │
-└── Sección 7 — Programas                    section: colegio_inicio_programas
+└── Sección 9 — Cierre / CTA                 section: colegio_inicio_programas
     ├── Imagen de fondo                      setting: colegio_programs_bg
-    ├── Logo / sello superpuesto             setting: colegio_programs_logo
-    └── URL — Botón "Solicita más info"      setting: colegio_info_url
+    ├── Titular principal                    setting: colegio_programs_titulo
+    ├── Texto del botón                      setting: colegio_programs_cta_texto
+    └── URL del botón                        setting: colegio_info_url
 
 Página de Contacto                           panel: colegio_panel_contacto
 └── Sección 1 — Formulario                   section: colegio_contacto_formulario

@@ -11,11 +11,73 @@ Author: Tu Nombre
     box-sizing: border-box;
 }
 
+/* Tipografía unificada (referencia: sección Noticias y Eventos, index) */
+:root {
+    --colegio-font-sans: Arial, Helvetica, sans-serif;
+    --colegio-section-title-size: clamp(34px, 4vw, 56px);
+    --colegio-section-title-lh: 1.1;
+    --colegio-section-title-weight: 800;
+    --colegio-section-title-color: #0b2332;
+    --colegio-section-label-size: 17px;
+    --colegio-section-label-weight: 700;
+    --colegio-section-label-color: #8d8d8d;
+    --colegio-body-size: clamp(14px, 1.2vw, 17px);
+    --colegio-body-lh: 1.65;
+    --colegio-body-color: #24303a;
+    --colegio-intro-color: #6b747c;
+    --colegio-card-title-size: clamp(20px, 1.75vw, 28px);
+    --colegio-card-title-lh: 1.2;
+    --colegio-card-title-weight: 800;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
     overflow-x: hidden;
+}
+
+/* Títulos principales de bloque (mismo criterio que .noticias-eventos-titulo) */
+.section-title,
+.valores-titulo,
+.modelo-titulo,
+.niveles-titulo,
+.campus-titulo,
+.vida-estudiantil-titulo,
+.noticias-eventos-titulo,
+.contact-title {
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-section-title-size);
+    line-height: var(--colegio-section-title-lh);
+    font-weight: var(--colegio-section-title-weight);
+    font-style: normal;
+}
+
+/* Títulos de tarjeta / bloque secundario (incl. hero y cierre: mismo tamaño que tarjeta Vida estudiantil) */
+.about-slide-title,
+.nivel-card-titulo,
+.campus-slide-titulo,
+.hero-title,
+.programs-headline,
+.vida-estudiantil-card-titulo,
+.noticia-item-titulo {
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-card-title-size);
+    line-height: var(--colegio-card-title-lh);
+    font-weight: var(--colegio-card-title-weight);
+    font-style: normal;
+}
+
+/* Párrafos de cuerpo en secciones de inicio */
+.section-description,
+.vida-estudiantil-descripcion,
+.about-slide-desc,
+.nivel-card-desc,
+.noticia-item-descripcion,
+.evento-descripcion {
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-body-size);
+    line-height: var(--colegio-body-lh);
 }
 
 .container {
@@ -35,6 +97,7 @@ body {
     padding: 20px 0;
     transition: background 0.3s ease;
     overflow: visible;
+    font-family: var(--colegio-font-sans);
 }
 
 .main-header.scrolled {
@@ -196,9 +259,7 @@ body {
 
 .hero-title {
     color: #fff;
-    font-size: clamp(28px, 3.5vw, 48px);
-    font-weight: bold;
-    line-height: 1.2;
+    font-style: normal;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     flex: 1;
     text-align: left;
@@ -241,16 +302,12 @@ body {
 }
 
 .section-title {
-    font-size: clamp(28px, 3.5vw, 42px);
-    font-weight: 800;
-    color: #1a365d;
+    color: var(--colegio-section-title-color);
     margin-bottom: 20px;
 }
 
 .section-description {
-    font-size: clamp(15px, 1.5vw, 18px);
-    color: #666;
-    line-height: 1.8;
+    color: var(--colegio-intro-color);
 }
 
 /* Slider wrapper */
@@ -315,18 +372,12 @@ body {
 }
 
 .about-slide-title {
-    font-size: clamp(20px, 2vw, 26px);
-    font-weight: 800;
-    font-style: italic;
-    color: #1a365d;
+    color: var(--colegio-section-title-color);
     margin-bottom: 20px;
-    line-height: 1.2;
 }
 
 .about-slide-desc {
-    font-size: clamp(14px, 1.3vw, 16px);
-    color: #444;
-    line-height: 1.75;
+    color: var(--colegio-body-color);
     flex: 1;
 }
 
@@ -414,12 +465,8 @@ body {
 }
 
 .valores-titulo {
-    font-size: clamp(24px, 3vw, 38px);
-    font-weight: 800;
-    font-style: italic;
-    color: #1a365d;
+    color: var(--colegio-section-title-color);
     margin-bottom: 48px;
-    text-transform: uppercase;
 }
 
 /* Fila central: flecha · contenido · flecha */
@@ -523,9 +570,11 @@ body {
 }
 
 .valores-card-titulo {
+    font-family: var(--colegio-font-sans);
     font-size: clamp(15px, 1.5vw, 18px);
     font-weight: 700;
-    color: #1a365d;
+    line-height: 1.3;
+    color: var(--colegio-section-title-color);
     padding: 16px 20px 18px;
     margin: 0;
     text-align: left;
@@ -541,8 +590,9 @@ body {
     display: none;
     background: #2d4a5a;
     color: #fff;
-    font-size: clamp(14px, 1.4vw, 16px);
-    line-height: 1.75;
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-body-size);
+    line-height: var(--colegio-body-lh);
     text-align: left;
     padding: 28px 32px;
     border-radius: 14px;
@@ -567,11 +617,7 @@ body {
 }
 
 .modelo-titulo {
-    font-size: clamp(26px, 3.5vw, 44px);
-    font-weight: 800;
-    font-style: italic;
-    color: #1a365d;
-    line-height: 1.2;
+    color: var(--colegio-section-title-color);
     margin: 0;
 }
 
@@ -579,7 +625,7 @@ body {
 .modelo-banner {
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    min-height: 380px;
+    min-height: 760px;
     background-size: cover;
     background-position: center;
     background-color: #2d4a5a;
@@ -610,29 +656,30 @@ body {
 
 .modelo-banner-texto {
     color: #fff;
-    font-size: clamp(15px, 1.6vw, 18px);
-    line-height: 1.75;
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-body-size);
+    line-height: var(--colegio-body-lh);
     text-align: center;
     margin: 0;
 }
 
 .modelo-banner-btn {
     display: inline-block;
-    background: rgba(255,255,255,0.18);
-    border: 1.5px solid rgba(255,255,255,0.55);
-    color: #fff;
+    background: #96d3e8;
+    border: none;
+    color: #1a2f3d;
+    font-family: var(--colegio-font-sans);
     font-size: clamp(13px, 1.1vw, 15px);
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     padding: 14px 32px;
     border-radius: 50px;
-    backdrop-filter: blur(4px);
-    transition: background 0.25s, border-color 0.25s;
+    transition: background 0.25s ease, transform 0.2s ease;
 }
 
 .modelo-banner-btn:hover {
-    background: rgba(255,255,255,0.30);
-    border-color: #fff;
+    background: #7ac4de;
+    transform: translateY(-1px);
 }
 
 /* Barra inferior oscura */
@@ -661,18 +708,21 @@ body {
 }
 
 .modelo-barra-titulo {
-    font-size: clamp(15px, 1.5vw, 18px);
-    font-weight: 800;
-    font-style: italic;
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-section-label-size);
+    font-weight: var(--colegio-section-label-weight);
+    font-style: normal;
     color: #fff;
     margin: 0 0 6px;
     text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .modelo-barra-desc {
-    font-size: clamp(13px, 1.2vw, 15px);
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-body-size);
     color: rgba(255,255,255,0.75);
-    line-height: 1.6;
+    line-height: var(--colegio-body-lh);
     margin: 0;
 }
 
@@ -706,10 +756,7 @@ body {
 }
 
 .niveles-titulo {
-    font-size: clamp(26px, 3.5vw, 44px);
-    font-weight: 800;
-    font-style: italic;
-    color: #1a365d;
+    color: var(--colegio-section-title-color);
     margin-bottom: 52px;
 }
 
@@ -772,25 +819,21 @@ body {
 }
 
 .nivel-card-titulo {
-    font-size: clamp(14px, 1.3vw, 16px);
-    font-weight: 700;
-    color: #1a365d;
+    color: var(--colegio-section-title-color);
     margin: 0 0 2px;
-    line-height: 1.3;
 }
 
 .nivel-card-subtitulo {
-    font-size: clamp(13px, 1.2vw, 15px);
-    font-weight: 700;
-    color: #1a365d;
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-section-label-size);
+    font-weight: var(--colegio-section-label-weight);
+    color: var(--colegio-section-label-color);
     margin: 0 0 12px;
     line-height: 1.3;
 }
 
 .nivel-card-desc {
-    font-size: clamp(13px, 1.1vw, 14px);
-    color: #555;
-    line-height: 1.65;
+    color: var(--colegio-body-color);
     margin: 0;
 }
 
@@ -827,20 +870,18 @@ body {
 }
 
 .campus-label {
-    font-size: clamp(11px, 1vw, 13px);
-    font-weight: 700;
-    letter-spacing: 0.2em;
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-section-label-size);
+    font-weight: var(--colegio-section-label-weight);
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.65);
     margin: 0 0 14px;
 }
 
 .campus-titulo {
-    font-size: clamp(26px, 3.5vw, 46px);
-    font-weight: 800;
     color: #fff;
     margin: 0;
-    line-height: 1.15;
 }
 
 /* Carrusel */
@@ -893,8 +934,6 @@ body {
 }
 
 .campus-slide-titulo {
-    font-size: clamp(18px, 2vw, 24px);
-    font-weight: 800;
     color: #fff;
     margin: 0;
     background: rgba(255,255,255,0.12);
@@ -943,18 +982,13 @@ body {
 
 .vida-estudiantil-titulo {
     margin: 0 0 14px;
-    color: #0b2332;
-    font-size: clamp(32px, 4vw, 52px);
-    line-height: 1.1;
-    font-weight: 800;
+    color: var(--colegio-section-title-color);
 }
 
 .vida-estudiantil-descripcion {
     margin: 0 auto;
     max-width: 620px;
-    color: #6b747c;
-    font-size: clamp(14px, 1.25vw, 18px);
-    line-height: 1.65;
+    color: var(--colegio-intro-color);
 }
 
 .vida-estudiantil-cards {
@@ -999,17 +1033,15 @@ body {
 
 .vida-estudiantil-card-titulo {
     margin: 0 0 12px;
-    color: #0b1f2d;
-    font-size: clamp(24px, 2.4vw, 38px);
-    line-height: 1.15;
-    font-weight: 800;
+    color: var(--colegio-section-title-color);
 }
 
 .vida-estudiantil-card-descripcion {
     margin: 0 0 24px;
-    color: #202a32;
-    font-size: clamp(14px, 1.2vw, 16px);
-    line-height: 1.5;
+    color: var(--colegio-body-color);
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-body-size);
+    line-height: var(--colegio-body-lh);
     max-width: 460px;
 }
 
@@ -1040,7 +1072,6 @@ body {
 .noticias-eventos-section {
     background: #f2f3f4;
     padding: 72px 40px 80px;
-    font-family: Arial, sans-serif;
 }
 
 .noticias-eventos-header {
@@ -1050,10 +1081,7 @@ body {
 
 .noticias-eventos-titulo {
     margin: 0;
-    color: #0b2332;
-    font-size: clamp(34px, 4vw, 56px);
-    line-height: 1.1;
-    font-weight: 800;
+    color: var(--colegio-section-title-color);
 }
 
 .noticias-eventos-grid {
@@ -1067,9 +1095,10 @@ body {
 
 .noticias-eventos-etiqueta {
     margin: 0 0 12px;
-    color: #8d8d8d;
-    font-size: 25px;
-    font-weight: 700;
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-section-label-size);
+    font-weight: var(--colegio-section-label-weight);
+    color: var(--colegio-section-label-color);
     line-height: 1.2;
 }
 
@@ -1110,17 +1139,12 @@ body {
 
 .noticia-item-titulo {
     margin: 0 0 10px;
-    color: #0d1e2a;
-    font-size: clamp(18px, 1.5vw, 24px);
-    line-height: 1.2;
-    font-weight: 800;
+    color: var(--colegio-section-title-color);
 }
 
 .noticia-item-descripcion {
     margin: 0 0 20px;
-    color: #24303a;
-    font-size: clamp(13px, 1.05vw, 16px);
-    line-height: 1.45;
+    color: var(--colegio-body-color);
 }
 
 .noticia-item-link {
@@ -1196,9 +1220,7 @@ body {
 
 .evento-descripcion {
     margin: 0;
-    color: #24303a;
-    font-size: clamp(13px, 1vw, 15px);
-    line-height: 1.35;
+    color: var(--colegio-body-color);
 }
 
 .evento-link {
@@ -1219,108 +1241,74 @@ body {
 }
 
 /* ================================
-   Sección Programas */
+   Sección 9 — Cierre / CTA (fondo + overlay + texto real) */
 .programs-section {
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
     position: relative;
+    min-height: min(92vh, 820px);
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
-.programs-section::before {
-    content: '';
+/* Capa de imagen (nítida; el texto va encima del overlay) */
+.programs-section__bg {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.35);
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #2d4a5a;
 }
 
-.programs-overlay {
-    position: relative;
+.programs-section__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.52);
     z-index: 1;
+}
+
+.programs-section__content {
+    position: relative;
+    z-index: 2;
     width: 100%;
-    max-width: 1200px;
-    padding: 60px 40px;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 72px 40px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 36px;
 }
 
-/* Imagen superpuesta (logo/sello) */
-.programs-logo-img {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.programs-logo-img img {
-    width: 180px;
-    height: 180px;
-    object-fit: contain;
-    border-radius: 50%;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
-}
-
-.programs-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    width: 100%;
-    margin-bottom: 50px;
-}
-
-.program-box {
-    background: rgba(0, 0, 0, 0.45);
-    padding: 30px 25px;
-    text-align: left;
-}
-
-.program-title {
-    font-size: 22px;
-    font-weight: bold;
+.programs-headline {
+    margin: 0;
+    font-style: italic;
     color: #fff;
-    margin-bottom: 6px;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
 }
 
-.program-subtitle {
-    font-size: 15px;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 14px;
-}
-
-.program-description {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-}
-
-.programs-cta {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.btn-info {
-    background: #98D5E9;
-    color: #102A36;
-    padding: 15px 50px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 15px;
-    letter-spacing: 0.5px;
+.programs-cta-btn {
     display: inline-block;
-    transition: background 0.3s ease;
+    background: #96d3e8;
+    color: #1a2f3d;
+    font-family: var(--colegio-font-sans);
+    font-size: clamp(12px, 1.05vw, 15px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 36px;
+    border-radius: 999px;
     border: none;
+    transition: background 0.25s ease, transform 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.btn-info:hover {
-    background: #7ac4db;
+.programs-cta-btn:hover {
+    background: #7ac4de;
+    transform: translateY(-2px);
 }
 
 /* ================================
@@ -1332,6 +1320,7 @@ body {
     padding: clamp(50px, 7vw, 90px) clamp(20px, 5vw, 60px) clamp(28px, 4vw, 50px);
     text-align: center;
     background: #1A2F3D;
+    font-family: var(--colegio-font-sans);
 }
 
 .site-footer-inner {
@@ -1488,17 +1477,8 @@ body {
         gap: 32px;
     }
 
-    .hero-title {
-        font-size: 36px;
-        text-align: left;
-    }
-
     .btn-admisiones {
         align-self: flex-start;
-    }
-
-    .section-title {
-        font-size: 34px;
     }
 
     .about-slide-inner {
@@ -1508,10 +1488,6 @@ body {
     .about-slide-card {
         width: 52%;
         padding: 28px 24px;
-    }
-
-    .programs-container {
-        grid-template-columns: 1fr;
     }
 
     /* Header nav en tablet/móvil: menú desplegable */
@@ -1587,9 +1563,20 @@ body {
     }
 
     .hero-title {
-        font-size: 26px;
-        line-height: 1.3;
         text-align: left;
+    }
+
+    /* Títulos de sección: mismo tamaño móvil que Noticias y Eventos */
+    .section-title,
+    .valores-titulo,
+    .modelo-titulo,
+    .niveles-titulo,
+    .campus-titulo,
+    .vida-estudiantil-titulo,
+    .noticias-eventos-titulo,
+    .contact-title {
+        font-size: 40px;
+        line-height: 1.1;
     }
 
     .btn-admisiones {
@@ -1606,13 +1593,7 @@ body {
     }
 
     .section-title {
-        font-size: 26px;
         margin-bottom: 16px;
-    }
-
-    .section-description {
-        font-size: 15px;
-        line-height: 1.7;
     }
 
     .about-slide-inner {
@@ -1647,7 +1628,7 @@ body {
     }
 
     .modelo-banner {
-        min-height: 300px;
+        min-height: 600px;
     }
 
     .modelo-barra {
@@ -1684,45 +1665,14 @@ body {
         height: 180px;
     }
 
-    /* Programas */
-    .programs-overlay {
-        padding: 40px 0;
+    /* Sección 9 — CTA */
+    .programs-section {
+        min-height: min(88vh, 600px);
     }
 
-    .programs-logo-img img {
-        width: 120px;
-        height: 120px;
-    }
-
-    .programs-logo-img {
-        margin-bottom: 24px;
-    }
-
-    .programs-container {
-        grid-template-columns: 1fr;
-        margin-bottom: 30px;
-    }
-
-    .program-box {
-        padding: 20px 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .program-box:last-child {
-        border-bottom: none;
-    }
-
-    .program-title {
-        font-size: 18px;
-    }
-
-    .program-subtitle {
-        font-size: 13px;
-        margin-bottom: 10px;
-    }
-
-    .program-description {
-        font-size: 13px;
+    .programs-section__content {
+        padding: 48px 20px;
+        gap: 28px;
     }
 
     /* Vida estudiantil */
@@ -1732,15 +1682,6 @@ body {
 
     .vida-estudiantil-header {
         margin-bottom: 30px;
-    }
-
-    .vida-estudiantil-titulo {
-        font-size: 36px;
-    }
-
-    .vida-estudiantil-descripcion {
-        font-size: 14px;
-        line-height: 1.6;
     }
 
     .vida-estudiantil-cards {
@@ -1762,13 +1703,11 @@ body {
     }
 
     .vida-estudiantil-card-titulo {
-        font-size: 32px;
         margin-bottom: 10px;
     }
 
     .vida-estudiantil-card-descripcion {
         margin-bottom: 18px;
-        font-size: 15px;
     }
 
     .vida-estudiantil-card-link {
@@ -1784,17 +1723,13 @@ body {
         margin-bottom: 24px;
     }
 
-    .noticias-eventos-titulo {
-        font-size: 40px;
-    }
-
     .noticias-eventos-grid {
         grid-template-columns: 1fr;
         gap: 22px;
     }
 
     .noticias-eventos-etiqueta {
-        font-size: 12px;
+        font-size: 15px;
         margin-bottom: 10px;
     }
 
@@ -1824,22 +1759,9 @@ body {
         font-size: 12px;
     }
 
-    /* Botón CTA */
-    .programs-cta {
-        margin-bottom: 30px;
-        padding: 0 20px;
-        width: 100%;
-    }
-
-    .btn-info {
-        display: block;
-        width: fit-content;
-        margin: 0 auto;
-        padding: 13px 32px;
+    .programs-cta-btn {
+        padding: 14px 28px;
         font-size: 12px;
-        letter-spacing: 1px;
-        border-radius: 50px;
-        text-align: center;
     }
 
     /* Footer */
@@ -1883,7 +1805,7 @@ body {
 
 body.page-contacto {
     background: #eef2f7;
-    font-family: 'Georgia', serif;
+    font-family: var(--colegio-font-sans);
 }
 
 body.page-contacto .main-header {
@@ -1905,7 +1827,7 @@ body.page-contacto .main-header {
     gap: 6px;
     opacity: 0.7;
     transition: opacity 0.2s;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
 }
 
 .btn-back:hover {
@@ -1919,6 +1841,7 @@ body.page-contacto .main-header {
     grid-template-columns: 1fr;
     align-items: start;
     padding: 50px 20px 80px;
+    font-family: var(--colegio-font-sans);
 }
 
 .contact-wrapper {
@@ -1944,31 +1867,28 @@ body.page-contacto .main-header {
     padding: 5px 16px;
     border-radius: 20px;
     margin-bottom: 18px;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
 }
 
 .contact-title {
-    font-size: 34px;
-    font-weight: bold;
-    color: #102A36;
+    color: var(--colegio-section-title-color);
     margin-bottom: 14px;
-    line-height: 1.2;
 }
 
 .contact-subtitle {
-    font-size: 15px;
-    color: #4a5568;
-    line-height: 1.8;
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-body-size);
+    color: var(--colegio-intro-color);
+    line-height: var(--colegio-body-lh);
     margin-bottom: 10px;
-    font-family: Arial, sans-serif;
 }
 
 .contact-intro {
-    font-size: 14px;
-    color: #718096;
-    line-height: 1.7;
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-body-size);
+    color: var(--colegio-intro-color);
+    line-height: var(--colegio-body-lh);
     font-style: italic;
-    font-family: Georgia, serif;
 }
 
 /* Tarjeta del formulario */
@@ -2018,7 +1938,7 @@ body.page-contacto .main-header {
     margin: 28px 0 18px;
     padding-bottom: 8px;
     border-bottom: 1px solid #eef2f7;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
 }
 
 .form-section-title:first-child {
@@ -2038,7 +1958,7 @@ body.page-contacto .main-header {
     text-transform: uppercase;
     letter-spacing: 0.8px;
     margin-bottom: 7px;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
 }
 
 .required {
@@ -2062,7 +1982,7 @@ body.page-contacto .main-header {
     color: #a0aec0;
     margin-bottom: 14px;
     font-style: italic;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
 }
 
 .contact-form input[type="text"],
@@ -2076,7 +1996,7 @@ body.page-contacto .main-header {
     font-size: 14px;
     color: #2d3748;
     background: #f8fafc;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
     transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
     outline: none;
 }
@@ -2133,7 +2053,7 @@ body.page-contacto .main-header {
     margin-bottom: 12px;
     padding-bottom: 8px;
     border-bottom: 2px solid #98D5E9;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
 }
 
 /* Checkbox como tarjetita */
@@ -2206,14 +2126,14 @@ body.page-contacto .main-header {
     font-weight: 600;
     color: #2d3748;
     line-height: 1.3;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
 }
 
 .checkbox-age {
     font-size: 11px;
     color: #a0aec0;
     margin-top: 2px;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
 }
 
 /* Radio Open House */
@@ -2245,7 +2165,7 @@ body.page-contacto .main-header {
     font-weight: 600;
     color: #4a5568;
     transition: all 0.15s;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
 }
 
 .radio-label input:checked + .radio-inner {
@@ -2260,7 +2180,7 @@ body.page-contacto .main-header {
     color: #a0aec0;
     line-height: 1.6;
     margin-bottom: 24px;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
     padding: 12px 14px;
     background: #f8fafc;
     border-radius: 8px;
@@ -2277,7 +2197,7 @@ body.page-contacto .main-header {
     padding: 12px 16px;
     font-size: 13px;
     margin-bottom: 16px;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
 }
 
 /* Botón enviar */
@@ -2293,7 +2213,7 @@ body.page-contacto .main-header {
     padding: 16px;
     cursor: pointer;
     transition: background 0.2s, transform 0.1s;
-    font-family: Arial, sans-serif;
+    font-family: var(--colegio-font-sans);
 }
 
 .btn-submit:hover {
@@ -2337,19 +2257,21 @@ body.page-contacto .main-header {
 }
 
 .form-success h3 {
-    font-size: 26px;
-    color: #102A36;
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-card-title-size);
+    font-weight: var(--colegio-card-title-weight);
+    line-height: var(--colegio-card-title-lh);
+    color: var(--colegio-section-title-color);
     margin-bottom: 12px;
-    font-family: Georgia, serif;
 }
 
 .form-success p {
-    font-size: 15px;
-    color: #718096;
-    line-height: 1.8;
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-body-size);
+    color: var(--colegio-intro-color);
+    line-height: var(--colegio-body-lh);
     max-width: 440px;
     margin: 0 auto;
-    font-family: Arial, sans-serif;
 }
 
 /* Responsive */
@@ -2359,7 +2281,8 @@ body.page-contacto .main-header {
     }
 
     .contact-title {
-        font-size: 26px;
+        font-size: 40px;
+        line-height: 1.1;
     }
 
     .contact-form {

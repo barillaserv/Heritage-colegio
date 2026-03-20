@@ -866,7 +866,7 @@ function colegio_customize_register( $wp_customize ) {
 
     // ── Sección: Programas ──────────────────────────────────────────
     $wp_customize->add_section( 'colegio_inicio_programas', array(
-        'title'    => __( 'Sección 9 — Programas', 'colegio-theme' ),
+        'title'    => __( 'Sección 9 — Cierre / CTA', 'colegio-theme' ),
         'panel'    => 'colegio_panel_inicio',
         'priority' => 46,
     ) );
@@ -877,30 +877,40 @@ function colegio_customize_register( $wp_customize ) {
     ) );
     if ( class_exists( 'WP_Customize_Image_Control' ) ) {
         $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'colegio_programs_bg_control', array(
-            'label'    => __( 'Imagen de fondo', 'colegio-theme' ),
-            'section'  => 'colegio_inicio_programas',
-            'settings' => 'colegio_programs_bg',
+            'label'       => __( 'Imagen de fondo', 'colegio-theme' ),
+            'description' => __( 'Imagen a pantalla completa; el tema aplica una capa oscura por CSS para el texto (sin texto incrustado en la imagen).', 'colegio-theme' ),
+            'section'     => 'colegio_inicio_programas',
+            'settings'    => 'colegio_programs_bg',
         ) ) );
     }
 
-    $wp_customize->add_setting( 'colegio_programs_logo', array(
-        'default'           => '',
-        'sanitize_callback' => 'esc_url_raw',
+    $wp_customize->add_setting( 'colegio_programs_titulo', array(
+        'default'           => __( 'Formando líderes ciudadanos del mundo con raíces firmes y visión global.', 'colegio-theme' ),
+        'sanitize_callback' => 'sanitize_textarea_field',
     ) );
-    if ( class_exists( 'WP_Customize_Image_Control' ) ) {
-        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'colegio_programs_logo_control', array(
-            'label'    => __( 'Logo / sello superpuesto', 'colegio-theme' ),
-            'section'  => 'colegio_inicio_programas',
-            'settings' => 'colegio_programs_logo',
-        ) ) );
-    }
+    $wp_customize->add_control( 'colegio_programs_titulo', array(
+        'label'       => __( 'Titular principal', 'colegio-theme' ),
+        'description' => __( 'Texto centrado sobre el fondo (sin imagen incrustada).', 'colegio-theme' ),
+        'section'     => 'colegio_inicio_programas',
+        'type'        => 'textarea',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_programs_cta_texto', array(
+        'default'           => __( 'ADMISIONES ABIERTAS', 'colegio-theme' ),
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_programs_cta_texto', array(
+        'label'   => __( 'Texto del botón', 'colegio-theme' ),
+        'section' => 'colegio_inicio_programas',
+        'type'    => 'text',
+    ) );
 
     $wp_customize->add_setting( 'colegio_info_url', array(
         'default'           => '#',
         'sanitize_callback' => 'esc_url_raw',
     ) );
     $wp_customize->add_control( 'colegio_info_url', array(
-        'label'   => __( 'URL — Botón "Solicita más información"', 'colegio-theme' ),
+        'label'   => __( 'URL del botón', 'colegio-theme' ),
         'section' => 'colegio_inicio_programas',
         'type'    => 'url',
     ) );
