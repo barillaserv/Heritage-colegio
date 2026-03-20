@@ -38,200 +38,201 @@ function colegio_theme_setup() {
 add_action('after_setup_theme', 'colegio_theme_setup');
 
 /**
- * Opciones del personalizador para imágenes de la portada
+ * Opciones del personalizador
  */
 function colegio_customize_register( $wp_customize ) {
-    // Sección para imágenes de portada
-    $wp_customize->add_section(
-        'colegio_home_images',
-        array(
-            'title'       => __( 'Imágenes de portada', 'colegio-theme' ),
-            'description' => __( 'Configura las imágenes de fondo de la portada.', 'colegio-theme' ),
-            'priority'    => 30,
-        )
-    );
 
-    // Imagen de fondo de la sección hero
-    $wp_customize->add_setting(
-        'colegio_hero_bg',
-        array(
-            'default'           => '',
-            'sanitize_callback' => 'esc_url_raw',
-        )
-    );
+    // ════════════════════════════════════════════════════════════════
+    // Panel principal del tema
+    // ════════════════════════════════════════════════════════════════
+    $wp_customize->add_panel( 'colegio_panel', array(
+        'title'    => __( 'Heritage American School', 'colegio-theme' ),
+        'priority' => 30,
+    ) );
 
+    // ────────────────────────────────────────────────────────────────
+    // Sección 1 › Imágenes de portada
+    // ────────────────────────────────────────────────────────────────
+    $wp_customize->add_section( 'colegio_home_images', array(
+        'title'       => __( 'Imágenes de portada', 'colegio-theme' ),
+        'description' => __( 'Imágenes de fondo y elementos visuales de la página principal.', 'colegio-theme' ),
+        'panel'       => 'colegio_panel',
+        'priority'    => 10,
+    ) );
+
+    $wp_customize->add_setting( 'colegio_hero_bg', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
     if ( class_exists( 'WP_Customize_Image_Control' ) ) {
-        $wp_customize->add_control(
-            new WP_Customize_Image_Control(
-                $wp_customize,
-                'colegio_hero_bg_control',
-                array(
-                    'label'    => __( 'Imagen de fondo - sección principal (Hero)', 'colegio-theme' ),
-                    'section'  => 'colegio_home_images',
-                    'settings' => 'colegio_hero_bg',
-                )
-            )
-        );
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'colegio_hero_bg_control', array(
+            'label'    => __( 'Fondo sección Hero', 'colegio-theme' ),
+            'section'  => 'colegio_home_images',
+            'settings' => 'colegio_hero_bg',
+        ) ) );
     }
 
-    // Imagen superpuesta (logo/sello) en la sección de programas
-    $wp_customize->add_setting(
-        'colegio_programs_logo',
-        array(
-            'default'           => '',
-            'sanitize_callback' => 'esc_url_raw',
-        )
-    );
-
+    $wp_customize->add_setting( 'colegio_programs_bg', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
     if ( class_exists( 'WP_Customize_Image_Control' ) ) {
-        $wp_customize->add_control(
-            new WP_Customize_Image_Control(
-                $wp_customize,
-                'colegio_programs_logo_control',
-                array(
-                    'label'    => __( 'Imagen superpuesta (logo/sello) - sección programas', 'colegio-theme' ),
-                    'section'  => 'colegio_home_images',
-                    'settings' => 'colegio_programs_logo',
-                )
-            )
-        );
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'colegio_programs_bg_control', array(
+            'label'    => __( 'Fondo sección Programas', 'colegio-theme' ),
+            'section'  => 'colegio_home_images',
+            'settings' => 'colegio_programs_bg',
+        ) ) );
     }
 
-    // Imágenes de apoyo para el formulario de contacto
-    $wp_customize->add_setting(
-        'colegio_contacto_img_superior',
-        array(
-            'default'           => '',
-            'sanitize_callback' => 'esc_url_raw',
-        )
-    );
-
+    $wp_customize->add_setting( 'colegio_programs_logo', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
     if ( class_exists( 'WP_Customize_Image_Control' ) ) {
-        $wp_customize->add_control(
-            new WP_Customize_Image_Control(
-                $wp_customize,
-                'colegio_contacto_img_superior_control',
-                array(
-                    'label'       => __( 'Imagen superior del formulario de contacto', 'colegio-theme' ),
-                    'description' => __( 'Se mostrara centrada arriba del formulario en la pagina de contacto.', 'colegio-theme' ),
-                    'section'     => 'colegio_home_images',
-                    'settings'    => 'colegio_contacto_img_superior',
-                )
-            )
-        );
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'colegio_programs_logo_control', array(
+            'label'    => __( 'Logo/sello superpuesto en Programas', 'colegio-theme' ),
+            'section'  => 'colegio_home_images',
+            'settings' => 'colegio_programs_logo',
+        ) ) );
     }
 
-    $wp_customize->add_setting(
-        'colegio_contacto_img_inferior',
-        array(
-            'default'           => '',
-            'sanitize_callback' => 'esc_url_raw',
-        )
-    );
-
+    $wp_customize->add_setting( 'colegio_contacto_img_superior', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
     if ( class_exists( 'WP_Customize_Image_Control' ) ) {
-        $wp_customize->add_control(
-            new WP_Customize_Image_Control(
-                $wp_customize,
-                'colegio_contacto_img_inferior_control',
-                array(
-                    'label'       => __( 'Imagen inferior del formulario de contacto', 'colegio-theme' ),
-                    'description' => __( 'Se mostrara centrada debajo del formulario en la pagina de contacto.', 'colegio-theme' ),
-                    'section'     => 'colegio_home_images',
-                    'settings'    => 'colegio_contacto_img_inferior',
-                )
-            )
-        );
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'colegio_contacto_img_superior_control', array(
+            'label'       => __( 'Imagen superior — Formulario de contacto', 'colegio-theme' ),
+            'description' => __( 'Se muestra centrada arriba del formulario.', 'colegio-theme' ),
+            'section'     => 'colegio_home_images',
+            'settings'    => 'colegio_contacto_img_superior',
+        ) ) );
     }
 
-    // Imagen de fondo de la sección de programas
-    $wp_customize->add_setting(
-        'colegio_programs_bg',
-        array(
-            'default'           => '',
-            'sanitize_callback' => 'esc_url_raw',
-        )
-    );
-
+    $wp_customize->add_setting( 'colegio_contacto_img_inferior', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
     if ( class_exists( 'WP_Customize_Image_Control' ) ) {
-        $wp_customize->add_control(
-            new WP_Customize_Image_Control(
-                $wp_customize,
-                'colegio_programs_bg_control',
-                array(
-                    'label'    => __( 'Imagen de fondo - sección programas', 'colegio-theme' ),
-                    'section'  => 'colegio_home_images',
-                    'settings' => 'colegio_programs_bg',
-                )
-            )
-        );
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'colegio_contacto_img_inferior_control', array(
+            'label'       => __( 'Imagen inferior — Formulario de contacto', 'colegio-theme' ),
+            'description' => __( 'Se muestra centrada debajo del formulario.', 'colegio-theme' ),
+            'section'     => 'colegio_home_images',
+            'settings'    => 'colegio_contacto_img_inferior',
+        ) ) );
     }
 
-    // ─── Sección: Enlaces ────────────────────────────────────────────
-    $wp_customize->add_section(
-        'colegio_links',
-        array(
-            'title'       => __( 'Enlaces', 'colegio-theme' ),
-            'description' => __( 'URLs del botón Contáctanos y redes sociales.', 'colegio-theme' ),
-            'priority'    => 40,
-        )
-    );
+    // ────────────────────────────────────────────────────────────────
+    // Sección 2 › Header
+    // ────────────────────────────────────────────────────────────────
+    $wp_customize->add_section( 'colegio_header', array(
+        'title'       => __( 'Header', 'colegio-theme' ),
+        'description' => __( 'El logo del header se configura en "Identidad del sitio".', 'colegio-theme' ),
+        'panel'       => 'colegio_panel',
+        'priority'    => 20,
+    ) );
 
-    // Botón Contáctanos
     $wp_customize->add_setting( 'colegio_contactanos_url', array(
         'default'           => '#',
         'sanitize_callback' => 'esc_url_raw',
     ) );
     $wp_customize->add_control( 'colegio_contactanos_url', array(
-        'label'   => __( 'URL - Botón Contáctanos', 'colegio-theme' ),
-        'section' => 'colegio_links',
+        'label'   => __( 'URL — Botón "Contáctanos"', 'colegio-theme' ),
+        'section' => 'colegio_header',
         'type'    => 'url',
     ) );
 
-    // Botón "Solicita más información"
     $wp_customize->add_setting( 'colegio_info_url', array(
         'default'           => '#',
         'sanitize_callback' => 'esc_url_raw',
     ) );
     $wp_customize->add_control( 'colegio_info_url', array(
-        'label'   => __( 'URL - Botón "Solicita más información"', 'colegio-theme' ),
-        'section' => 'colegio_links',
+        'label'   => __( 'URL — Botón "Solicita más información"', 'colegio-theme' ),
+        'section' => 'colegio_header',
         'type'    => 'url',
     ) );
 
-    // Facebook
-    $wp_customize->add_setting( 'colegio_facebook_url', array(
-        'default'           => '#',
-        'sanitize_callback' => 'esc_url_raw',
-    ) );
-    $wp_customize->add_control( 'colegio_facebook_url', array(
-        'label'   => __( 'URL - Facebook', 'colegio-theme' ),
-        'section' => 'colegio_links',
-        'type'    => 'url',
-    ) );
-
-    // Instagram
-    $wp_customize->add_setting( 'colegio_instagram_url', array(
-        'default'           => '#',
-        'sanitize_callback' => 'esc_url_raw',
-    ) );
-    $wp_customize->add_control( 'colegio_instagram_url', array(
-        'label'   => __( 'URL - Instagram', 'colegio-theme' ),
-        'section' => 'colegio_links',
-        'type'    => 'url',
+    // ────────────────────────────────────────────────────────────────
+    // Sección 3 › Footer
+    // ────────────────────────────────────────────────────────────────
+    $wp_customize->add_section( 'colegio_footer', array(
+        'title'       => __( 'Footer', 'colegio-theme' ),
+        'description' => __( 'El logo del footer usa el mismo logo del sitio (configurable en "Identidad del sitio").', 'colegio-theme' ),
+        'panel'       => 'colegio_panel',
+        'priority'    => 30,
     ) );
 
-    // ─── Sección: Integración ────────────────────────────────────────
-    $wp_customize->add_section(
-        'colegio_integraciones',
-        array(
-            'title'       => __( 'Integraciones', 'colegio-theme' ),
-            'description' => __( 'Conecta el formulario de contacto con servicios externos.', 'colegio-theme' ),
-            'priority'    => 50,
-        )
+    // — Menú del footer —
+    $footer_nav_items = array(
+        'campus'      => 'Campus',
+        'admisiones'  => 'Admisiones',
+        'programas'   => 'Programas',
+        'galeria'     => 'Galería',
     );
 
-    // Webhook de Zapier
+    foreach ( $footer_nav_items as $key => $default_label ) {
+        $wp_customize->add_setting( "colegio_footer_nav_{$key}_label", array(
+            'default'           => $default_label,
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_footer_nav_{$key}_label", array(
+            'label'   => sprintf( __( 'Menú — Texto "%s"', 'colegio-theme' ), $default_label ),
+            'section' => 'colegio_footer',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_footer_nav_{$key}_url", array(
+            'default'           => '#',
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        $wp_customize->add_control( "colegio_footer_nav_{$key}_url", array(
+            'label'   => sprintf( __( 'Menú — URL "%s"', 'colegio-theme' ), $default_label ),
+            'section' => 'colegio_footer',
+            'type'    => 'url',
+        ) );
+    }
+
+    // — Redes sociales —
+    $wp_customize->add_setting( 'colegio_footer_social_title', array(
+        'default'           => 'SÍGUENOS',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_footer_social_title', array(
+        'label'   => __( 'Redes — Título (ej. "SÍGUENOS")', 'colegio-theme' ),
+        'section' => 'colegio_footer',
+        'type'    => 'text',
+    ) );
+
+    $social_networks = array(
+        'facebook'  => 'Facebook',
+        'instagram' => 'Instagram',
+        'youtube'   => 'YouTube',
+        'whatsapp'  => 'WhatsApp',
+        'linkedin'  => 'LinkedIn',
+    );
+
+    foreach ( $social_networks as $key => $label ) {
+        $wp_customize->add_setting( "colegio_{$key}_url", array(
+            'default'           => '#',
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        $wp_customize->add_control( "colegio_{$key}_url", array(
+            'label'   => sprintf( __( 'Redes — URL %s', 'colegio-theme' ), $label ),
+            'section' => 'colegio_footer',
+            'type'    => 'url',
+        ) );
+    }
+
+    // ────────────────────────────────────────────────────────────────
+    // Sección 4 › Integraciones
+    // ────────────────────────────────────────────────────────────────
+    $wp_customize->add_section( 'colegio_integraciones', array(
+        'title'       => __( 'Integraciones', 'colegio-theme' ),
+        'description' => __( 'Conecta el formulario de contacto con servicios externos.', 'colegio-theme' ),
+        'panel'       => 'colegio_panel',
+        'priority'    => 40,
+    ) );
+
     $wp_customize->add_setting( 'colegio_zapier_webhook', array(
         'default'           => '',
         'sanitize_callback' => 'esc_url_raw',

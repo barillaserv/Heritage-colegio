@@ -253,12 +253,91 @@ body {
     background: #7ac4db;
 }
 
-/* Footer integrado en la sección de programas */
-.main-footer {
-    width: 100%;
-    padding: 30px 20px;
+/* ================================
+   Footer
+================================ */
+.site-footer, .main-footer {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: clamp(50px, 7vw, 90px) clamp(20px, 5vw, 60px) clamp(28px, 4vw, 50px);
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    background: #1A2F3D;
+}
+
+.site-footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.site-footer-logo-img {
+    max-height: clamp(80px, 10vw, 130px);
+    width: auto;
+    display: block;
+    margin: 0 auto 4px;
+}
+
+.site-footer-logo-placeholder {
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 700;
+    color: #fff;
+    margin: 0 auto 4px;
+}
+
+.site-footer-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.22);
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    margin-top: clamp(28px, 4vw, 44px);
+    margin-bottom: clamp(28px, 4vw, 44px);
+}
+
+.site-footer-divider--thin {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    margin-top: clamp(22px, 3vw, 36px);
+    margin-bottom: clamp(22px, 3vw, 36px);
+    opacity: 0.9;
+}
+
+.site-footer-developed {
+    font-size: clamp(11px, 1vw, 13px);
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    text-align: right;
+}
+
+.site-footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: clamp(24px, 4vw, 72px);
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.site-footer-nav-link {
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    font-size: clamp(16px, 1.8vw, 22px);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: color 0.2s ease;
+}
+
+.site-footer-nav-link:hover {
+    color: #ffffff;
+}
+
+.site-footer-social-title {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: clamp(12px, 1.1vw, 15px);
+    letter-spacing: 3px;
+    margin-bottom: clamp(16px, 2vw, 26px);
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 .footer-title {
@@ -286,6 +365,41 @@ body {
     justify-content: center;
     text-decoration: none;
     transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.site-footer .social-icons {
+    gap: clamp(16px, 2vw, 28px);
+}
+
+.site-footer .social-icon {
+    width: clamp(50px, 5.5vw, 66px);
+    height: clamp(50px, 5.5vw, 66px);
+    background: #ffffff;
+    border-color: #ffffff;
+}
+
+.site-footer .social-icon svg {
+    width: clamp(22px, 2.4vw, 30px);
+    height: clamp(22px, 2.4vw, 30px);
+}
+
+.site-footer .social-icon[aria-label="Facebook"] svg { fill: #1A2F3D; }
+.site-footer .social-icon[aria-label="WhatsApp"] svg  { fill: #1A2F3D; }
+
+.site-footer .social-icon[aria-label="Instagram"] svg,
+.site-footer .social-icon[aria-label="YouTube"] svg,
+.site-footer .social-icon[aria-label="LinkedIn"] svg {
+    stroke: #1A2F3D;
+}
+
+.site-footer .social-icon[aria-label="YouTube"] svg polygon {
+    fill: #1A2F3D;
+    stroke: none;
+}
+
+.site-footer .social-icon:hover {
+    background: #e8f0fe;
+    border-color: #e8f0fe;
 }
 
 .social-icon:hover {
@@ -411,18 +525,37 @@ body {
     }
 
     /* Footer */
-    .main-footer {
-        padding: 24px 20px;
+    .site-footer {
+        padding: 40px 16px 28px;
     }
 
-    .footer-title {
+    .site-footer-nav {
+        gap: 20px 28px;
+    }
+
+    .site-footer-nav-link {
+        font-size: 16px;
+    }
+
+    .site-footer-social-title {
+        font-size: 12px;
+        letter-spacing: 2.5px;
+        margin-bottom: 16px;
+    }
+
+    .site-footer .social-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .site-footer .social-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .site-footer-developed {
         font-size: 11px;
-        margin-bottom: 12px;
-    }
-
-    .social-icon {
-        width: 38px;
-        height: 38px;
+        text-align: center;
     }
 }
 
