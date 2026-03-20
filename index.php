@@ -56,6 +56,18 @@ foreach ( range( 1, 3 ) as $n ) {
     );
 }
 
+$campus_label  = get_theme_mod( 'colegio_campus_label', 'NUESTRO CAMPUS' );
+$campus_titulo = get_theme_mod( 'colegio_campus_titulo', 'Un entorno para la grandeza' );
+$campus_slides = array();
+foreach ( range( 1, 3 ) as $n ) {
+    $campus_slides[] = array(
+        'imagen'    => get_theme_mod( "colegio_campus_slide{$n}_imagen", '' ),
+        'titulo'    => get_theme_mod( "colegio_campus_slide{$n}_titulo", '' ),
+        'btn_texto' => get_theme_mod( "colegio_campus_slide{$n}_btn_texto", 'Más información' ),
+        'btn_url'   => get_theme_mod( "colegio_campus_slide{$n}_btn_url", '#' ),
+    );
+}
+
 $programs_bg = get_theme_mod( 'colegio_programs_bg' );
 if ( ! $programs_bg ) {
     $programs_bg = get_template_directory_uri() . '/programs-bg.jpg';
@@ -251,6 +263,36 @@ $info_url      = get_theme_mod( 'colegio_info_url', '#' );
         </a>
         <?php endforeach; ?>
     </div>
+</section>
+
+<!-- Sección 6: Nuestro Campus -->
+<section class="campus-section">
+
+    <!-- Cabecera oscura -->
+    <div class="campus-header">
+        <p class="campus-label"><?php echo esc_html( $campus_label ); ?></p>
+        <h2 class="campus-titulo"><?php echo esc_html( $campus_titulo ); ?></h2>
+    </div>
+
+    <!-- Carrusel con peek lateral -->
+    <div class="campus-carousel-outer">
+        <div class="campus-track" id="campusTrack">
+            <?php foreach ( $campus_slides as $i => $slide ) : ?>
+            <div class="campus-slide" style="<?php if ( $slide['imagen'] ) echo 'background-image:url(\'' . esc_url( $slide['imagen'] ) . '\')'; ?>">
+                <div class="campus-slide-content">
+                    <?php if ( $slide['titulo'] ) : ?>
+                    <p class="campus-slide-titulo"><?php echo esc_html( $slide['titulo'] ); ?></p>
+                    <?php endif; ?>
+                    <a href="<?php echo esc_url( $slide['btn_url'] ); ?>" class="campus-slide-btn">
+                        <?php echo esc_html( $slide['btn_texto'] ); ?>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
 </section>
 
 <!-- Sección 7: Programas académicos -->

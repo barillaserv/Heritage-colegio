@@ -497,6 +497,81 @@ function colegio_customize_register( $wp_customize ) {
         ) );
     }
 
+    // ── Sección: Nuestro Campus ─────────────────────────────────────
+    $wp_customize->add_section( 'colegio_inicio_campus', array(
+        'title'    => __( 'Sección 6 — Nuestro Campus', 'colegio-theme' ),
+        'panel'    => 'colegio_panel_inicio',
+        'priority' => 40,
+    ) );
+
+    $wp_customize->add_setting( 'colegio_campus_label', array(
+        'default'           => 'NUESTRO CAMPUS',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_campus_label', array(
+        'label'   => __( 'Etiqueta superior', 'colegio-theme' ),
+        'section' => 'colegio_inicio_campus',
+        'type'    => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_campus_titulo', array(
+        'default'           => 'Un entorno para la grandeza',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_campus_titulo', array(
+        'label'   => __( 'Título', 'colegio-theme' ),
+        'section' => 'colegio_inicio_campus',
+        'type'    => 'text',
+    ) );
+
+    foreach ( range( 1, 3 ) as $n ) {
+        $wp_customize->add_setting( "colegio_campus_slide{$n}_imagen", array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        if ( class_exists( 'WP_Customize_Image_Control' ) ) {
+            $wp_customize->add_control( new WP_Customize_Image_Control(
+                $wp_customize,
+                "colegio_campus_slide{$n}_imagen_control",
+                array(
+                    'label'    => __( "Slide {$n} — Imagen", 'colegio-theme' ),
+                    'section'  => 'colegio_inicio_campus',
+                    'settings' => "colegio_campus_slide{$n}_imagen",
+                )
+            ) );
+        }
+
+        $wp_customize->add_setting( "colegio_campus_slide{$n}_titulo", array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_campus_slide{$n}_titulo", array(
+            'label'   => __( "Slide {$n} — Título", 'colegio-theme' ),
+            'section' => 'colegio_inicio_campus',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_campus_slide{$n}_btn_texto", array(
+            'default'           => 'Más información',
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_campus_slide{$n}_btn_texto", array(
+            'label'   => __( "Slide {$n} — Texto del botón", 'colegio-theme' ),
+            'section' => 'colegio_inicio_campus',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_campus_slide{$n}_btn_url", array(
+            'default'           => '#',
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        $wp_customize->add_control( "colegio_campus_slide{$n}_btn_url", array(
+            'label'   => __( "Slide {$n} — URL del botón", 'colegio-theme' ),
+            'section' => 'colegio_inicio_campus',
+            'type'    => 'url',
+        ) );
+    }
+
     // ── Sección: Programas ──────────────────────────────────────────
     $wp_customize->add_section( 'colegio_inicio_programas', array(
         'title'    => __( 'Sección 7 — Programas', 'colegio-theme' ),

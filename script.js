@@ -205,3 +205,36 @@ document.addEventListener('DOMContentLoaded', function() {
     prev && prev.addEventListener('click', () => goTo(current - 1));
     next && next.addEventListener('click', () => goTo(current + 1));
 }());
+
+/* ================================
+   Carrusel auto-rotate — Sección 6 Nuestro Campus
+================================ */
+(function () {
+    const track  = document.getElementById('campusTrack');
+    if (!track) return;
+
+    const slides      = Array.from(track.querySelectorAll('.campus-slide'));
+    const total       = slides.length;
+    if (total < 2) return;
+
+    let current  = 0;
+    const GAP_PX = 16;
+
+    function getSlideWidth() {
+        return slides[0].getBoundingClientRect().width + GAP_PX;
+    }
+
+    function moveTo(index) {
+        current = ((index % total) + total) % total;
+        track.style.transform = `translateX(-${current * getSlideWidth()}px)`;
+    }
+
+    // Auto-avance cada 4 s
+    let timer = setInterval(() => moveTo(current + 1), 4000);
+
+    // Pausa al pasar el mouse
+    track.addEventListener('mouseenter', () => clearInterval(timer));
+    track.addEventListener('mouseleave', () => {
+        timer = setInterval(() => moveTo(current + 1), 4000);
+    });
+}());
