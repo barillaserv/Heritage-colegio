@@ -68,6 +68,39 @@ foreach ( range( 1, 3 ) as $n ) {
     );
 }
 
+$vida_estudiantil_titulo = get_theme_mod( 'colegio_vida_estudiantil_titulo', 'Vida estudiantil' );
+$vida_estudiantil_descripcion = get_theme_mod( 'colegio_vida_estudiantil_descripcion', 'Formación Integral en Acción. La educación en Heritage no termina al sonar el timbre. Creemos que el carácter se forja en la cancha, en el escenario y en la variedad de los clubes que se ofrecen.' );
+$vida_estudiantil_defaults = array(
+    1 => array(
+        'titulo'      => 'Deportes y Clubes',
+        'descripcion' => 'Nuestras canchas deportivas no son solo espacios de recreación; son laboratorios de liderazgo.',
+        'boton_texto' => 'Ver Más',
+        'url'         => '#',
+    ),
+    2 => array(
+        'titulo'      => 'Alianza Familia-Colegio',
+        'descripcion' => 'Socios en el Crecimiento. En Heritage American School, estamos convencidos de que el éxito de nuestros estudiantes nace de una alianza inquebrantable entre el hogar y el colegio.',
+        'boton_texto' => 'Ver Más',
+        'url'         => '#',
+    ),
+    3 => array(
+        'titulo'      => 'Salud y bienestar socio emocional',
+        'descripcion' => 'En Heritage, el éxito no se mide solo por las calificaciones, sino por la capacidad de nuestros estudiantes para aportar al mundo.',
+        'boton_texto' => 'Ver Más',
+        'url'         => '#',
+    ),
+);
+$vida_estudiantil_cards = array();
+foreach ( range( 1, 3 ) as $n ) {
+    $vida_estudiantil_cards[] = array(
+        'imagen'      => get_theme_mod( "colegio_vida_estudiantil_card{$n}_imagen", '' ),
+        'titulo'      => get_theme_mod( "colegio_vida_estudiantil_card{$n}_titulo", $vida_estudiantil_defaults[ $n ]['titulo'] ),
+        'descripcion' => get_theme_mod( "colegio_vida_estudiantil_card{$n}_descripcion", $vida_estudiantil_defaults[ $n ]['descripcion'] ),
+        'boton_texto' => get_theme_mod( "colegio_vida_estudiantil_card{$n}_boton_texto", $vida_estudiantil_defaults[ $n ]['boton_texto'] ),
+        'url'         => get_theme_mod( "colegio_vida_estudiantil_card{$n}_url", $vida_estudiantil_defaults[ $n ]['url'] ),
+    );
+}
+
 $programs_bg = get_theme_mod( 'colegio_programs_bg' );
 if ( ! $programs_bg ) {
     $programs_bg = get_template_directory_uri() . '/programs-bg.jpg';
@@ -295,7 +328,39 @@ $info_url      = get_theme_mod( 'colegio_info_url', '#' );
 
 </section>
 
-<!-- Sección 7: Programas académicos -->
+<!-- Sección 7: Vida estudiantil -->
+<section class="vida-estudiantil-section">
+    <div class="vida-estudiantil-header">
+        <h2 class="vida-estudiantil-titulo"><?php echo esc_html( $vida_estudiantil_titulo ); ?></h2>
+        <p class="vida-estudiantil-descripcion"><?php echo esc_html( $vida_estudiantil_descripcion ); ?></p>
+    </div>
+
+    <div class="vida-estudiantil-cards">
+        <?php foreach ( $vida_estudiantil_cards as $card ) : ?>
+            <article class="vida-estudiantil-card">
+                <div class="vida-estudiantil-card-image">
+                    <?php if ( $card['imagen'] ) : ?>
+                        <img src="<?php echo esc_url( $card['imagen'] ); ?>" alt="<?php echo esc_attr( $card['titulo'] ); ?>">
+                    <?php endif; ?>
+                </div>
+                <div class="vida-estudiantil-card-content">
+                    <?php if ( $card['titulo'] ) : ?>
+                        <h3 class="vida-estudiantil-card-titulo"><?php echo esc_html( $card['titulo'] ); ?></h3>
+                    <?php endif; ?>
+                    <?php if ( $card['descripcion'] ) : ?>
+                        <p class="vida-estudiantil-card-descripcion"><?php echo esc_html( $card['descripcion'] ); ?></p>
+                    <?php endif; ?>
+                    <a class="vida-estudiantil-card-link" href="<?php echo esc_url( $card['url'] ); ?>">
+                        <?php echo esc_html( $card['boton_texto'] ); ?>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+            </article>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<!-- Sección 9: Programas académicos -->
 <section class="programs-section" style="background-image: url('<?php echo esc_url( $programs_bg ); ?>');">
     <div class="programs-overlay">
 

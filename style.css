@@ -928,6 +928,113 @@ body {
 }
 
 /* ================================
+   Sección 7 — Vida estudiantil
+================================ */
+.vida-estudiantil-section {
+    background: #f2f3f4;
+    padding: 70px 40px 84px;
+}
+
+.vida-estudiantil-header {
+    max-width: 780px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+
+.vida-estudiantil-titulo {
+    margin: 0 0 14px;
+    color: #0b2332;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.vida-estudiantil-descripcion {
+    margin: 0 auto;
+    max-width: 620px;
+    color: #6b747c;
+    font-size: clamp(14px, 1.25vw, 18px);
+    line-height: 1.65;
+}
+
+.vida-estudiantil-cards {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    gap: 28px;
+}
+
+.vida-estudiantil-card {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(300px, 1fr);
+    align-items: stretch;
+    background: transparent;
+    overflow: hidden;
+}
+
+.vida-estudiantil-card-image {
+    min-height: 240px;
+    background: #d9dee2;
+    border-radius: 10px 0 0 10px;
+    overflow: hidden;
+}
+
+.vida-estudiantil-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.vida-estudiantil-card-content {
+    background: #fff;
+    margin: 5% 0;
+    height: 90%;
+    padding: 36px 36px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(8, 26, 38, 0.08);
+}
+
+.vida-estudiantil-card-titulo {
+    margin: 0 0 12px;
+    color: #0b1f2d;
+    font-size: clamp(24px, 2.4vw, 38px);
+    line-height: 1.15;
+    font-weight: 800;
+}
+
+.vida-estudiantil-card-descripcion {
+    margin: 0 0 24px;
+    color: #202a32;
+    font-size: clamp(14px, 1.2vw, 16px);
+    line-height: 1.5;
+    max-width: 460px;
+}
+
+.vida-estudiantil-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #9bd8e7;
+    font-size: clamp(14px, 1.2vw, 20px);
+    font-weight: 700;
+    transition: color 0.2s;
+}
+
+.vida-estudiantil-card-link svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+}
+
+.vida-estudiantil-card-link:hover {
+    color: #79c7da;
+}
+
+/* ================================
    Sección Programas */
 .programs-section {
     min-height: 100vh;
@@ -1432,6 +1539,56 @@ body {
 
     .program-description {
         font-size: 13px;
+    }
+
+    /* Vida estudiantil */
+    .vida-estudiantil-section {
+        padding: 54px 20px 58px;
+    }
+
+    .vida-estudiantil-header {
+        margin-bottom: 30px;
+    }
+
+    .vida-estudiantil-titulo {
+        font-size: 36px;
+    }
+
+    .vida-estudiantil-descripcion {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .vida-estudiantil-cards {
+        gap: 18px;
+    }
+
+    .vida-estudiantil-card {
+        grid-template-columns: 1fr;
+    }
+
+    .vida-estudiantil-card-image {
+        min-height: 220px;
+    }
+
+    .vida-estudiantil-card-content {
+        margin: 0;
+        height: auto;
+        padding: 24px 20px 20px;
+    }
+
+    .vida-estudiantil-card-titulo {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .vida-estudiantil-card-descripcion {
+        margin-bottom: 18px;
+        font-size: 15px;
+    }
+
+    .vida-estudiantil-card-link {
+        font-size: 20px;
     }
 
     /* Botón CTA */

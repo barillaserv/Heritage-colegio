@@ -572,11 +572,117 @@ function colegio_customize_register( $wp_customize ) {
         ) );
     }
 
+    // ── Sección: Vida estudiantil ───────────────────────────────────
+    $wp_customize->add_section( 'colegio_inicio_vida_estudiantil', array(
+        'title'    => __( 'Sección 7 — Vida estudiantil', 'colegio-theme' ),
+        'panel'    => 'colegio_panel_inicio',
+        'priority' => 42,
+    ) );
+
+    $wp_customize->add_setting( 'colegio_vida_estudiantil_titulo', array(
+        'default'           => 'Vida estudiantil',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_vida_estudiantil_titulo', array(
+        'label'   => __( 'Título de la sección', 'colegio-theme' ),
+        'section' => 'colegio_inicio_vida_estudiantil',
+        'type'    => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_vida_estudiantil_descripcion', array(
+        'default'           => 'Formación Integral en Acción. La educación en Heritage no termina al sonar el timbre. Creemos que el carácter se forja en la cancha, en el escenario y en la variedad de los clubes que se ofrecen.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ) );
+    $wp_customize->add_control( 'colegio_vida_estudiantil_descripcion', array(
+        'label'   => __( 'Descripción de la sección', 'colegio-theme' ),
+        'section' => 'colegio_inicio_vida_estudiantil',
+        'type'    => 'textarea',
+    ) );
+
+    $vida_estudiantil_defaults = array(
+        1 => array(
+            'titulo'       => 'Deportes y Clubes',
+            'descripcion'  => 'Nuestras canchas deportivas no son solo espacios de recreación; son laboratorios de liderazgo.',
+            'boton_texto'  => 'Ver Más',
+            'url'          => '#',
+        ),
+        2 => array(
+            'titulo'       => 'Alianza Familia-Colegio',
+            'descripcion'  => 'Socios en el Crecimiento. En Heritage American School, estamos convencidos de que el éxito de nuestros estudiantes nace de una alianza inquebrantable entre el hogar y el colegio.',
+            'boton_texto'  => 'Ver Más',
+            'url'          => '#',
+        ),
+        3 => array(
+            'titulo'       => 'Salud y bienestar socio emocional',
+            'descripcion'  => 'En Heritage, el éxito no se mide solo por las calificaciones, sino por la capacidad de nuestros estudiantes para aportar al mundo.',
+            'boton_texto'  => 'Ver Más',
+            'url'          => '#',
+        ),
+    );
+
+    foreach ( range( 1, 3 ) as $n ) {
+        $wp_customize->add_setting( "colegio_vida_estudiantil_card{$n}_imagen", array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        if ( class_exists( 'WP_Customize_Image_Control' ) ) {
+            $wp_customize->add_control( new WP_Customize_Image_Control(
+                $wp_customize,
+                "colegio_vida_estudiantil_card{$n}_imagen_control",
+                array(
+                    'label'    => __( "Card {$n} — Imagen", 'colegio-theme' ),
+                    'section'  => 'colegio_inicio_vida_estudiantil',
+                    'settings' => "colegio_vida_estudiantil_card{$n}_imagen",
+                )
+            ) );
+        }
+
+        $wp_customize->add_setting( "colegio_vida_estudiantil_card{$n}_titulo", array(
+            'default'           => $vida_estudiantil_defaults[ $n ]['titulo'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_vida_estudiantil_card{$n}_titulo", array(
+            'label'   => __( "Card {$n} — Título", 'colegio-theme' ),
+            'section' => 'colegio_inicio_vida_estudiantil',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_vida_estudiantil_card{$n}_descripcion", array(
+            'default'           => $vida_estudiantil_defaults[ $n ]['descripcion'],
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ) );
+        $wp_customize->add_control( "colegio_vida_estudiantil_card{$n}_descripcion", array(
+            'label'   => __( "Card {$n} — Descripción", 'colegio-theme' ),
+            'section' => 'colegio_inicio_vida_estudiantil',
+            'type'    => 'textarea',
+        ) );
+
+        $wp_customize->add_setting( "colegio_vida_estudiantil_card{$n}_boton_texto", array(
+            'default'           => $vida_estudiantil_defaults[ $n ]['boton_texto'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_vida_estudiantil_card{$n}_boton_texto", array(
+            'label'   => __( "Card {$n} — Texto del botón", 'colegio-theme' ),
+            'section' => 'colegio_inicio_vida_estudiantil',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_vida_estudiantil_card{$n}_url", array(
+            'default'           => $vida_estudiantil_defaults[ $n ]['url'],
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        $wp_customize->add_control( "colegio_vida_estudiantil_card{$n}_url", array(
+            'label'   => __( "Card {$n} — URL del botón", 'colegio-theme' ),
+            'section' => 'colegio_inicio_vida_estudiantil',
+            'type'    => 'url',
+        ) );
+    }
+
     // ── Sección: Programas ──────────────────────────────────────────
     $wp_customize->add_section( 'colegio_inicio_programas', array(
-        'title'    => __( 'Sección 7 — Programas', 'colegio-theme' ),
+        'title'    => __( 'Sección 9 — Programas', 'colegio-theme' ),
         'panel'    => 'colegio_panel_inicio',
-        'priority' => 20,
+        'priority' => 45,
     ) );
 
     $wp_customize->add_setting( 'colegio_programs_bg', array(
