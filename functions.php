@@ -144,12 +144,22 @@ function colegio_customize_register( $wp_customize ) {
         ) ) );
     }
 
+    $wp_customize->add_setting( 'colegio_hero_admisiones_texto', array(
+        'default'           => 'ADMISIONES ABIERTAS',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_hero_admisiones_texto', array(
+        'label'   => __( 'Texto — Botón Admisiones', 'colegio-theme' ),
+        'section' => 'colegio_inicio_hero',
+        'type'    => 'text',
+    ) );
+
     $wp_customize->add_setting( 'colegio_hero_admisiones_url', array(
         'default'           => '#',
         'sanitize_callback' => 'esc_url_raw',
     ) );
     $wp_customize->add_control( 'colegio_hero_admisiones_url', array(
-        'label'   => __( 'URL — Botón "Admisiones Abiertas"', 'colegio-theme' ),
+        'label'   => __( 'URL — Botón Admisiones', 'colegio-theme' ),
         'section' => 'colegio_inicio_hero',
         'type'    => 'url',
     ) );

@@ -6,7 +6,8 @@ if ( ! $hero_bg ) {
     $hero_bg = get_template_directory_uri() . '/hero-bg.jpg';
 }
 
-$admisiones_url = get_theme_mod( 'colegio_hero_admisiones_url', '#' );
+$admisiones_texto = get_theme_mod( 'colegio_hero_admisiones_texto', 'ADMISIONES ABIERTAS' );
+$admisiones_url   = get_theme_mod( 'colegio_hero_admisiones_url', '#' );
 
 $programs_bg = get_theme_mod( 'colegio_programs_bg' );
 if ( ! $programs_bg ) {
@@ -21,7 +22,7 @@ $info_url      = get_theme_mod( 'colegio_info_url', '#' );
 <section class="hero-section" style="background-image: url('<?php echo esc_url( $hero_bg ); ?>');">
     <div class="hero-content">
         <h1 class="hero-title">Formando líderes ciudadanos del mundo con raíces firmes y visión global.</h1>
-        <a href="<?php echo esc_url( $admisiones_url ); ?>" class="btn-admisiones">ADMISIONES ABIERTAS</a>
+        <a href="<?php echo esc_url( $admisiones_url ); ?>" class="btn-admisiones"><?php echo esc_html( $admisiones_texto ); ?></a>
     </div>
 </section>
 

@@ -41,7 +41,9 @@ Global (Header / Footer)                     panel: colegio_panel_global
 
 Página de Inicio                             panel: colegio_panel_inicio
 ├── Sección Hero                             section: colegio_inicio_hero
-│   └── Imagen de fondo                      setting: colegio_hero_bg
+│   ├── Imagen de fondo                      setting: colegio_hero_bg
+│   ├── Texto — Botón Admisiones             setting: colegio_hero_admisiones_texto
+│   └── URL — Botón Admisiones              setting: colegio_hero_admisiones_url
 │
 └── Sección Programas                        section: colegio_inicio_programas
     ├── Imagen de fondo                      setting: colegio_programs_bg
