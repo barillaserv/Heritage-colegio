@@ -1040,6 +1040,7 @@ body {
 .noticias-eventos-section {
     background: #f2f3f4;
     padding: 72px 40px 80px;
+    font-family: Arial, sans-serif;
 }
 
 .noticias-eventos-header {
@@ -1065,9 +1066,9 @@ body {
 }
 
 .noticias-eventos-etiqueta {
-    margin: 0 0 16px;
+    margin: 0 0 12px;
     color: #8d8d8d;
-    font-size: 34px;
+    font-size: 25px;
     font-weight: 700;
     line-height: 1.2;
 }
@@ -1110,7 +1111,7 @@ body {
 .noticia-item-titulo {
     margin: 0 0 10px;
     color: #0d1e2a;
-    font-size: clamp(24px, 2vw, 32px);
+    font-size: clamp(18px, 1.5vw, 24px);
     line-height: 1.2;
     font-weight: 800;
 }
@@ -1180,7 +1181,7 @@ body {
 
 .evento-dia {
     color: #0b2332;
-    font-size: 34px;
+    font-size: 15px;
     line-height: 1;
     font-weight: 800;
 }
@@ -1188,8 +1189,8 @@ body {
 .evento-titulo {
     margin: 0 0 8px;
     color: #0d1e2a;
-    font-size: clamp(20px, 1.6vw, 28px);
-    line-height: 1.2;
+    font-size: 15px;
+    line-height: 1.35;
     font-weight: 800;
 }
 
@@ -1793,8 +1794,8 @@ body {
     }
 
     .noticias-eventos-etiqueta {
-        font-size: 26px;
-        margin-bottom: 12px;
+        font-size: 12px;
+        margin-bottom: 10px;
     }
 
     .noticia-item {
@@ -1820,7 +1821,7 @@ body {
     }
 
     .evento-titulo {
-        font-size: 22px;
+        font-size: 12px;
     }
 
     /* Botón CTA */
