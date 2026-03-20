@@ -144,6 +144,16 @@ function colegio_customize_register( $wp_customize ) {
         ) ) );
     }
 
+    $wp_customize->add_setting( 'colegio_hero_admisiones_url', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'colegio_hero_admisiones_url', array(
+        'label'   => __( 'URL — Botón "Admisiones Abiertas"', 'colegio-theme' ),
+        'section' => 'colegio_inicio_hero',
+        'type'    => 'url',
+    ) );
+
     // ── Sección: Programas ──────────────────────────────────────────
     $wp_customize->add_section( 'colegio_inicio_programas', array(
         'title'    => __( 'Sección Programas', 'colegio-theme' ),
