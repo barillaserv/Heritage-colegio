@@ -308,6 +308,120 @@ function colegio_customize_register( $wp_customize ) {
         ) );
     }
 
+    // ── Sección: Modelo Educativo ───────────────────────────────────
+    $wp_customize->add_section( 'colegio_inicio_modelo', array(
+        'title'    => __( 'Sección 4 — Modelo Educativo', 'colegio-theme' ),
+        'panel'    => 'colegio_panel_inicio',
+        'priority' => 30,
+    ) );
+
+    // Título superior
+    $wp_customize->add_setting( 'colegio_modelo_titulo', array(
+        'default'           => 'Modelo Educativo Internacional',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_modelo_titulo', array(
+        'label'   => __( 'Título de la sección', 'colegio-theme' ),
+        'section' => 'colegio_inicio_modelo',
+        'type'    => 'text',
+    ) );
+
+    // Banner (imagen de fondo + texto + botón)
+    $wp_customize->add_setting( 'colegio_modelo_banner_bg', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    if ( class_exists( 'WP_Customize_Image_Control' ) ) {
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'colegio_modelo_banner_bg_control', array(
+            'label'    => __( 'Banner — Imagen de fondo', 'colegio-theme' ),
+            'section'  => 'colegio_inicio_modelo',
+            'settings' => 'colegio_modelo_banner_bg',
+        ) ) );
+    }
+
+    $wp_customize->add_setting( 'colegio_modelo_banner_texto', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ) );
+    $wp_customize->add_control( 'colegio_modelo_banner_texto', array(
+        'label'   => __( 'Banner — Texto', 'colegio-theme' ),
+        'section' => 'colegio_inicio_modelo',
+        'type'    => 'textarea',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_modelo_banner_btn_texto', array(
+        'default'           => '¿Cómo funciona nuestro modelo?',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_modelo_banner_btn_texto', array(
+        'label'   => __( 'Banner — Texto del botón', 'colegio-theme' ),
+        'section' => 'colegio_inicio_modelo',
+        'type'    => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_modelo_banner_btn_url', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'colegio_modelo_banner_btn_url', array(
+        'label'   => __( 'Banner — URL del botón', 'colegio-theme' ),
+        'section' => 'colegio_inicio_modelo',
+        'type'    => 'url',
+    ) );
+
+    // Barra inferior (logo + título + descripción + botón)
+    $wp_customize->add_setting( 'colegio_modelo_barra_logo', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    if ( class_exists( 'WP_Customize_Image_Control' ) ) {
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'colegio_modelo_barra_logo_control', array(
+            'label'    => __( 'Barra — Logo / ícono', 'colegio-theme' ),
+            'section'  => 'colegio_inicio_modelo',
+            'settings' => 'colegio_modelo_barra_logo',
+        ) ) );
+    }
+
+    $wp_customize->add_setting( 'colegio_modelo_barra_titulo', array(
+        'default'           => 'CIUDADANOS GLOBALES',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_modelo_barra_titulo', array(
+        'label'   => __( 'Barra — Título', 'colegio-theme' ),
+        'section' => 'colegio_inicio_modelo',
+        'type'    => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_modelo_barra_descripcion', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ) );
+    $wp_customize->add_control( 'colegio_modelo_barra_descripcion', array(
+        'label'   => __( 'Barra — Descripción', 'colegio-theme' ),
+        'section' => 'colegio_inicio_modelo',
+        'type'    => 'textarea',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_modelo_barra_btn_texto', array(
+        'default'           => 'CONOCE MÁS',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_modelo_barra_btn_texto', array(
+        'label'   => __( 'Barra — Texto del botón', 'colegio-theme' ),
+        'section' => 'colegio_inicio_modelo',
+        'type'    => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_modelo_barra_btn_url', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'colegio_modelo_barra_btn_url', array(
+        'label'   => __( 'Barra — URL del botón', 'colegio-theme' ),
+        'section' => 'colegio_inicio_modelo',
+        'type'    => 'url',
+    ) );
+
     // ── Sección: Programas ──────────────────────────────────────────
     $wp_customize->add_section( 'colegio_inicio_programas', array(
         'title'    => __( 'Sección 7 — Programas', 'colegio-theme' ),

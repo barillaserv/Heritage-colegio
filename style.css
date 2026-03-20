@@ -553,6 +553,150 @@ body {
 }
 
 /* ================================
+   Sección 4 — Modelo Educativo
+================================ */
+.modelo-section {
+    background: #fff;
+}
+
+/* Título superior */
+.modelo-header {
+    padding: 64px 40px 52px;
+    text-align: center;
+    background: #fff;
+}
+
+.modelo-titulo {
+    font-size: clamp(26px, 3.5vw, 44px);
+    font-weight: 800;
+    font-style: italic;
+    color: #1a365d;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* Banner con imagen */
+.modelo-banner {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    min-height: 380px;
+    background-size: cover;
+    background-position: center;
+    background-color: #2d4a5a;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modelo-banner-overlay {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 60px 40px;
+    max-width: 780px;
+    width: 100%;
+}
+
+.modelo-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.modelo-banner-texto {
+    color: #fff;
+    font-size: clamp(15px, 1.6vw, 18px);
+    line-height: 1.75;
+    text-align: center;
+    margin: 0;
+}
+
+.modelo-banner-btn {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1.5px solid rgba(255,255,255,0.55);
+    color: #fff;
+    font-size: clamp(13px, 1.1vw, 15px);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    backdrop-filter: blur(4px);
+    transition: background 0.25s, border-color 0.25s;
+}
+
+.modelo-banner-btn:hover {
+    background: rgba(255,255,255,0.30);
+    border-color: #fff;
+}
+
+/* Barra inferior oscura */
+.modelo-barra {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    background: #1A2F3D;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 44px 60px;
+}
+
+.modelo-barra-logo {
+    flex-shrink: 0;
+}
+
+.modelo-barra-logo img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+}
+
+.modelo-barra-texto {
+    flex: 1;
+}
+
+.modelo-barra-titulo {
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 800;
+    font-style: italic;
+    color: #fff;
+    margin: 0 0 6px;
+    text-transform: uppercase;
+}
+
+.modelo-barra-desc {
+    font-size: clamp(13px, 1.2vw, 15px);
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.modelo-barra-btn {
+    display: inline-block;
+    background: #c9b87a;
+    color: #1A2F3D;
+    font-size: clamp(12px, 1vw, 14px);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.25s;
+}
+
+.modelo-barra-btn:hover {
+    background: #b8a460;
+}
+
+/* ================================
    Sección Programas */
 .programs-section {
     min-height: 100vh;
@@ -963,6 +1107,27 @@ body {
         width: 44px;
         height: 30px;
         font-size: 11px;
+    }
+
+    /* Modelo Educativo */
+    .modelo-header {
+        padding: 48px 20px 36px;
+    }
+
+    .modelo-banner {
+        min-height: 300px;
+    }
+
+    .modelo-barra {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 24px;
+        gap: 20px;
+    }
+
+    .modelo-barra-btn {
+        width: 100%;
+        text-align: center;
     }
 
     /* Valores */

@@ -33,6 +33,17 @@ foreach ( range( 1, 2 ) as $n ) {
     );
 }
 
+$modelo_titulo          = get_theme_mod( 'colegio_modelo_titulo', 'Modelo Educativo Internacional' );
+$modelo_banner_bg       = get_theme_mod( 'colegio_modelo_banner_bg', '' );
+$modelo_banner_texto    = get_theme_mod( 'colegio_modelo_banner_texto', '' );
+$modelo_banner_btn_txt  = get_theme_mod( 'colegio_modelo_banner_btn_texto', '¿Cómo funciona nuestro modelo?' );
+$modelo_banner_btn_url  = get_theme_mod( 'colegio_modelo_banner_btn_url', '#' );
+$modelo_barra_logo      = get_theme_mod( 'colegio_modelo_barra_logo', '' );
+$modelo_barra_titulo    = get_theme_mod( 'colegio_modelo_barra_titulo', 'CIUDADANOS GLOBALES' );
+$modelo_barra_desc      = get_theme_mod( 'colegio_modelo_barra_descripcion', '' );
+$modelo_barra_btn_txt   = get_theme_mod( 'colegio_modelo_barra_btn_texto', 'CONOCE MÁS' );
+$modelo_barra_btn_url   = get_theme_mod( 'colegio_modelo_barra_btn_url', '#' );
+
 $programs_bg = get_theme_mod( 'colegio_programs_bg' );
 if ( ! $programs_bg ) {
     $programs_bg = get_template_directory_uri() . '/programs-bg.jpg';
@@ -155,6 +166,46 @@ $info_url      = get_theme_mod( 'colegio_info_url', '#' );
         </div>
         <?php endforeach; ?>
     </div>
+</section>
+
+<!-- Sección 4: Modelo Educativo -->
+<section class="modelo-section">
+
+    <!-- Título superior -->
+    <div class="modelo-header">
+        <h2 class="modelo-titulo"><?php echo esc_html( $modelo_titulo ); ?></h2>
+    </div>
+
+    <!-- Banner con imagen de fondo -->
+    <div class="modelo-banner"<?php if ( $modelo_banner_bg ) echo ' style="background-image:url(\'' . esc_url( $modelo_banner_bg ) . '\')"'; ?>>
+        <div class="modelo-banner-overlay">
+            <?php if ( $modelo_banner_texto ) : ?>
+            <p class="modelo-banner-texto"><?php echo esc_html( $modelo_banner_texto ); ?></p>
+            <?php endif; ?>
+            <a href="<?php echo esc_url( $modelo_banner_btn_url ); ?>" class="modelo-banner-btn">
+                <?php echo esc_html( $modelo_banner_btn_txt ); ?>
+            </a>
+        </div>
+    </div>
+
+    <!-- Barra inferior oscura -->
+    <div class="modelo-barra">
+        <?php if ( $modelo_barra_logo ) : ?>
+        <div class="modelo-barra-logo">
+            <img src="<?php echo esc_url( $modelo_barra_logo ); ?>" alt="<?php echo esc_attr( $modelo_barra_titulo ); ?>">
+        </div>
+        <?php endif; ?>
+        <div class="modelo-barra-texto">
+            <p class="modelo-barra-titulo"><?php echo esc_html( $modelo_barra_titulo ); ?></p>
+            <?php if ( $modelo_barra_desc ) : ?>
+            <p class="modelo-barra-desc"><?php echo esc_html( $modelo_barra_desc ); ?></p>
+            <?php endif; ?>
+        </div>
+        <a href="<?php echo esc_url( $modelo_barra_btn_url ); ?>" class="modelo-barra-btn">
+            <?php echo esc_html( $modelo_barra_btn_txt ); ?>
+        </a>
+    </div>
+
 </section>
 
 <!-- Sección 7: Programas académicos -->
