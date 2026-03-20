@@ -625,7 +625,7 @@ body {
 .modelo-banner {
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    min-height: 760px;
+    min-height: 380px;
     background-size: cover;
     background-position: center;
     background-color: #2d4a5a;
@@ -1430,19 +1430,20 @@ body {
 }
 
 .site-footer .social-icons {
-    gap: clamp(16px, 2vw, 28px);
+    gap: clamp(10px, 1.5vw, 16px);
 }
 
 .site-footer .social-icon {
-    width: clamp(50px, 5.5vw, 66px);
-    height: clamp(50px, 5.5vw, 66px);
+    width: clamp(34px, 3.8vw, 40px);
+    height: clamp(34px, 3.8vw, 40px);
+    border-width: 1.5px;
     background: #ffffff;
     border-color: #ffffff;
 }
 
 .site-footer .social-icon svg {
-    width: clamp(22px, 2.4vw, 30px);
-    height: clamp(22px, 2.4vw, 30px);
+    width: clamp(15px, 1.6vw, 18px);
+    height: clamp(15px, 1.6vw, 18px);
 }
 
 .site-footer .social-icon[aria-label="Facebook"] svg { fill: #1A2F3D; }
@@ -1628,7 +1629,7 @@ body {
     }
 
     .modelo-banner {
-        min-height: 600px;
+        min-height: 300px;
     }
 
     .modelo-barra {
@@ -1784,13 +1785,13 @@ body {
     }
 
     .site-footer .social-icon {
-        width: 50px;
-        height: 50px;
+        width: 36px;
+        height: 36px;
     }
 
     .site-footer .social-icon svg {
-        width: 22px;
-        height: 22px;
+        width: 16px;
+        height: 16px;
     }
 
     .site-footer-developed {
