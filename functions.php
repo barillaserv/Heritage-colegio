@@ -422,6 +422,81 @@ function colegio_customize_register( $wp_customize ) {
         'type'    => 'url',
     ) );
 
+    // ── Sección: Niveles Académicos ─────────────────────────────────
+    $wp_customize->add_section( 'colegio_inicio_niveles', array(
+        'title'    => __( 'Sección 5 — Niveles Académicos', 'colegio-theme' ),
+        'panel'    => 'colegio_panel_inicio',
+        'priority' => 35,
+    ) );
+
+    $wp_customize->add_setting( 'colegio_niveles_titulo', array(
+        'default'           => 'Niveles Académicos',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_niveles_titulo', array(
+        'label'   => __( 'Título de la sección', 'colegio-theme' ),
+        'section' => 'colegio_inicio_niveles',
+        'type'    => 'text',
+    ) );
+
+    foreach ( range( 1, 3 ) as $n ) {
+        $wp_customize->add_setting( "colegio_niveles_card{$n}_imagen", array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        if ( class_exists( 'WP_Customize_Image_Control' ) ) {
+            $wp_customize->add_control( new WP_Customize_Image_Control(
+                $wp_customize,
+                "colegio_niveles_card{$n}_imagen_control",
+                array(
+                    'label'    => __( "Card {$n} — Imagen", 'colegio-theme' ),
+                    'section'  => 'colegio_inicio_niveles',
+                    'settings' => "colegio_niveles_card{$n}_imagen",
+                )
+            ) );
+        }
+
+        $wp_customize->add_setting( "colegio_niveles_card{$n}_titulo", array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_niveles_card{$n}_titulo", array(
+            'label'   => __( "Card {$n} — Título", 'colegio-theme' ),
+            'section' => 'colegio_inicio_niveles',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_niveles_card{$n}_subtitulo", array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_niveles_card{$n}_subtitulo", array(
+            'label'   => __( "Card {$n} — Subtítulo", 'colegio-theme' ),
+            'section' => 'colegio_inicio_niveles',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_niveles_card{$n}_descripcion", array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ) );
+        $wp_customize->add_control( "colegio_niveles_card{$n}_descripcion", array(
+            'label'   => __( "Card {$n} — Descripción", 'colegio-theme' ),
+            'section' => 'colegio_inicio_niveles',
+            'type'    => 'textarea',
+        ) );
+
+        $wp_customize->add_setting( "colegio_niveles_card{$n}_url", array(
+            'default'           => '#',
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        $wp_customize->add_control( "colegio_niveles_card{$n}_url", array(
+            'label'   => __( "Card {$n} — URL de la flecha", 'colegio-theme' ),
+            'section' => 'colegio_inicio_niveles',
+            'type'    => 'url',
+        ) );
+    }
+
     // ── Sección: Programas ──────────────────────────────────────────
     $wp_customize->add_section( 'colegio_inicio_programas', array(
         'title'    => __( 'Sección 7 — Programas', 'colegio-theme' ),

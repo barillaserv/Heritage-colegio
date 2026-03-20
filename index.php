@@ -44,6 +44,18 @@ $modelo_barra_desc      = get_theme_mod( 'colegio_modelo_barra_descripcion', '' 
 $modelo_barra_btn_txt   = get_theme_mod( 'colegio_modelo_barra_btn_texto', 'CONOCE MÁS' );
 $modelo_barra_btn_url   = get_theme_mod( 'colegio_modelo_barra_btn_url', '#' );
 
+$niveles_titulo = get_theme_mod( 'colegio_niveles_titulo', 'Niveles Académicos' );
+$niveles_cards  = array();
+foreach ( range( 1, 3 ) as $n ) {
+    $niveles_cards[] = array(
+        'imagen'      => get_theme_mod( "colegio_niveles_card{$n}_imagen", '' ),
+        'titulo'      => get_theme_mod( "colegio_niveles_card{$n}_titulo", '' ),
+        'subtitulo'   => get_theme_mod( "colegio_niveles_card{$n}_subtitulo", '' ),
+        'descripcion' => get_theme_mod( "colegio_niveles_card{$n}_descripcion", '' ),
+        'url'         => get_theme_mod( "colegio_niveles_card{$n}_url", '#' ),
+    );
+}
+
 $programs_bg = get_theme_mod( 'colegio_programs_bg' );
 if ( ! $programs_bg ) {
     $programs_bg = get_template_directory_uri() . '/programs-bg.jpg';
@@ -206,6 +218,39 @@ $info_url      = get_theme_mod( 'colegio_info_url', '#' );
         </a>
     </div>
 
+</section>
+
+<!-- Sección 5: Niveles Académicos -->
+<section class="niveles-section">
+    <h2 class="niveles-titulo"><?php echo esc_html( $niveles_titulo ); ?></h2>
+
+    <div class="niveles-grid">
+        <?php foreach ( $niveles_cards as $card ) : ?>
+        <a href="<?php echo esc_url( $card['url'] ); ?>" class="nivel-card">
+            <?php if ( $card['imagen'] ) : ?>
+            <div class="nivel-card-img">
+                <img src="<?php echo esc_url( $card['imagen'] ); ?>" alt="<?php echo esc_attr( $card['titulo'] ); ?>">
+            </div>
+            <?php endif; ?>
+            <div class="nivel-card-body">
+                <div class="nivel-card-info">
+                    <?php if ( $card['titulo'] ) : ?>
+                    <p class="nivel-card-titulo"><?php echo esc_html( $card['titulo'] ); ?></p>
+                    <?php endif; ?>
+                    <?php if ( $card['subtitulo'] ) : ?>
+                    <p class="nivel-card-subtitulo"><?php echo esc_html( $card['subtitulo'] ); ?></p>
+                    <?php endif; ?>
+                    <?php if ( $card['descripcion'] ) : ?>
+                    <p class="nivel-card-desc"><?php echo esc_html( $card['descripcion'] ); ?></p>
+                    <?php endif; ?>
+                </div>
+                <span class="nivel-card-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </span>
+            </div>
+        </a>
+        <?php endforeach; ?>
+    </div>
 </section>
 
 <!-- Sección 7: Programas académicos -->
