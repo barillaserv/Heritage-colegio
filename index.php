@@ -22,6 +22,17 @@ foreach ( range( 1, 3 ) as $n ) {
     );
 }
 
+$valores_titulo    = get_theme_mod( 'colegio_valores_titulo', 'NUESTROS VALORES' );
+$valores_imagen_izq = get_theme_mod( 'colegio_valores_imagen_izq', '' );
+$valores_slides = array();
+foreach ( range( 1, 2 ) as $n ) {
+    $valores_slides[] = array(
+        'imagen'      => get_theme_mod( "colegio_valores_slide{$n}_imagen", '' ),
+        'titulo'      => get_theme_mod( "colegio_valores_slide{$n}_titulo", '' ),
+        'descripcion' => get_theme_mod( "colegio_valores_slide{$n}_descripcion", '' ),
+    );
+}
+
 $programs_bg = get_theme_mod( 'colegio_programs_bg' );
 if ( ! $programs_bg ) {
     $programs_bg = get_template_directory_uri() . '/programs-bg.jpg';
@@ -94,7 +105,59 @@ $info_url      = get_theme_mod( 'colegio_info_url', '#' );
     </div>
 </section>
 
-<!-- Sección 3: Programas académicos -->
+<!-- Sección 3: Nuestros Valores -->
+<section class="valores-section">
+    <h2 class="valores-titulo"><?php echo esc_html( $valores_titulo ); ?></h2>
+
+    <div class="valores-body">
+        <button class="valores-nav valores-nav-prev" id="valoresPrev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <div class="valores-main">
+            <!-- Imagen izquierda fija -->
+            <?php if ( $valores_imagen_izq ) : ?>
+            <div class="valores-img-izq">
+                <img src="<?php echo esc_url( $valores_imagen_izq ); ?>" alt="<?php echo esc_attr( $valores_titulo ); ?>">
+            </div>
+            <?php endif; ?>
+
+            <!-- Slides -->
+            <div class="valores-slider" id="valoresSlider">
+                <?php foreach ( $valores_slides as $i => $slide ) : ?>
+                <div class="valores-slide<?php echo $i === 0 ? ' active' : ''; ?>">
+                    <div class="valores-card">
+                        <?php if ( $slide['imagen'] ) : ?>
+                        <div class="valores-card-img">
+                            <img src="<?php echo esc_url( $slide['imagen'] ); ?>" alt="<?php echo esc_attr( $slide['titulo'] ); ?>">
+                            <span class="valores-card-num"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
+                        </div>
+                        <?php endif; ?>
+                        <?php if ( $slide['titulo'] ) : ?>
+                        <p class="valores-card-titulo"><?php echo esc_html( $slide['titulo'] ); ?></p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <button class="valores-nav valores-nav-next" id="valoresNext" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+    </div>
+
+    <!-- Descripción por slide -->
+    <div class="valores-desc-wrapper" id="valoresDescWrapper">
+        <?php foreach ( $valores_slides as $i => $slide ) : ?>
+        <div class="valores-desc<?php echo $i === 0 ? ' active' : ''; ?>">
+            <?php echo esc_html( $slide['descripcion'] ); ?>
+        </div>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<!-- Sección 7: Programas académicos -->
 <section class="programs-section" style="background-image: url('<?php echo esc_url( $programs_bg ); ?>');">
     <div class="programs-overlay">
 

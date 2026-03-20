@@ -180,3 +180,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 }());
+
+/* ================================
+   Slider — Sección 3 Nuestros Valores
+================================ */
+(function () {
+    const slides = Array.from(document.querySelectorAll('.valores-slide'));
+    const descs  = Array.from(document.querySelectorAll('.valores-desc'));
+    const prev   = document.getElementById('valoresPrev');
+    const next   = document.getElementById('valoresNext');
+
+    if (!slides.length) return;
+
+    let current = 0;
+
+    function goTo(index) {
+        slides[current].classList.remove('active');
+        descs[current] && descs[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        descs[current] && descs[current].classList.add('active');
+    }
+
+    prev && prev.addEventListener('click', () => goTo(current - 1));
+    next && next.addEventListener('click', () => goTo(current + 1));
+}());

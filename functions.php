@@ -241,9 +241,76 @@ function colegio_customize_register( $wp_customize ) {
         ) );
     }
 
+    // ── Sección: Nuestros Valores ───────────────────────────────────
+    $wp_customize->add_section( 'colegio_inicio_valores', array(
+        'title'    => __( 'Sección 3 — Nuestros Valores', 'colegio-theme' ),
+        'panel'    => 'colegio_panel_inicio',
+        'priority' => 25,
+    ) );
+
+    $wp_customize->add_setting( 'colegio_valores_titulo', array(
+        'default'           => 'NUESTROS VALORES',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_valores_titulo', array(
+        'label'   => __( 'Título de la sección', 'colegio-theme' ),
+        'section' => 'colegio_inicio_valores',
+        'type'    => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_valores_imagen_izq', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    if ( class_exists( 'WP_Customize_Image_Control' ) ) {
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'colegio_valores_imagen_izq_control', array(
+            'label'    => __( 'Imagen izquierda (igual en todos los slides)', 'colegio-theme' ),
+            'section'  => 'colegio_inicio_valores',
+            'settings' => 'colegio_valores_imagen_izq',
+        ) ) );
+    }
+
+    foreach ( range( 1, 2 ) as $n ) {
+        $wp_customize->add_setting( "colegio_valores_slide{$n}_imagen", array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        if ( class_exists( 'WP_Customize_Image_Control' ) ) {
+            $wp_customize->add_control( new WP_Customize_Image_Control(
+                $wp_customize,
+                "colegio_valores_slide{$n}_imagen_control",
+                array(
+                    'label'    => __( "Slide {$n} — Imagen de la tarjeta", 'colegio-theme' ),
+                    'section'  => 'colegio_inicio_valores',
+                    'settings' => "colegio_valores_slide{$n}_imagen",
+                )
+            ) );
+        }
+
+        $wp_customize->add_setting( "colegio_valores_slide{$n}_titulo", array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_valores_slide{$n}_titulo", array(
+            'label'   => __( "Slide {$n} — Título", 'colegio-theme' ),
+            'section' => 'colegio_inicio_valores',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_valores_slide{$n}_descripcion", array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ) );
+        $wp_customize->add_control( "colegio_valores_slide{$n}_descripcion", array(
+            'label'   => __( "Slide {$n} — Descripción", 'colegio-theme' ),
+            'section' => 'colegio_inicio_valores',
+            'type'    => 'textarea',
+        ) );
+    }
+
     // ── Sección: Programas ──────────────────────────────────────────
     $wp_customize->add_section( 'colegio_inicio_programas', array(
-        'title'    => __( 'Sección 3 — Programas', 'colegio-theme' ),
+        'title'    => __( 'Sección 7 — Programas', 'colegio-theme' ),
         'panel'    => 'colegio_panel_inicio',
         'priority' => 20,
     ) );

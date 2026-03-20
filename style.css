@@ -404,7 +404,156 @@ body {
     color: #fff;
 }
 
-/* Sección Programas */
+/* ================================
+   Sección 3 — Nuestros Valores
+================================ */
+.valores-section {
+    padding: 72px 40px 64px;
+    background: #f0f2f5;
+    text-align: center;
+}
+
+.valores-titulo {
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: 800;
+    font-style: italic;
+    color: #1a365d;
+    margin-bottom: 48px;
+    text-transform: uppercase;
+}
+
+/* Fila central: flecha · contenido · flecha */
+.valores-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.valores-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    flex-shrink: 0;
+    color: #98D5E9;
+    transition: color 0.2s;
+}
+
+.valores-nav svg {
+    width: 28px;
+    height: 28px;
+    stroke: #98D5E9;
+}
+
+.valores-nav:hover {
+    color: #5bbdd6;
+}
+
+/* Zona imagen izquierda + slider */
+.valores-main {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex: 1;
+}
+
+/* Imagen izquierda fija */
+.valores-img-izq {
+    flex: 0 0 42%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.valores-img-izq img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Slider */
+.valores-slider {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.valores-slide {
+    display: none;
+}
+
+.valores-slide.active {
+    display: block;
+}
+
+/* Card */
+.valores-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.valores-card-img {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.valores-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.valores-card-num {
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    font-size: 42px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.85);
+    line-height: 1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.valores-card-titulo {
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 700;
+    color: #1a365d;
+    padding: 16px 20px 18px;
+    margin: 0;
+    text-align: left;
+}
+
+/* Caja de descripción */
+.valores-desc-wrapper {
+    max-width: 680px;
+    margin: 36px auto 0;
+}
+
+.valores-desc {
+    display: none;
+    background: #2d4a5a;
+    color: #fff;
+    font-size: clamp(14px, 1.4vw, 16px);
+    line-height: 1.75;
+    text-align: left;
+    padding: 28px 32px;
+    border-radius: 14px;
+}
+
+.valores-desc.active {
+    display: block;
+}
+
+/* ================================
+   Sección Programas */
 .programs-section {
     min-height: 100vh;
     background-size: cover;
@@ -814,6 +963,28 @@ body {
         width: 44px;
         height: 30px;
         font-size: 11px;
+    }
+
+    /* Valores */
+    .valores-section {
+        padding: 52px 20px 48px;
+    }
+
+    .valores-main {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .valores-img-izq {
+        flex: 0 0 auto;
+    }
+
+    .valores-img-izq img {
+        max-width: 200px;
+    }
+
+    .valores-card-img {
+        height: 180px;
     }
 
     /* Programas */
