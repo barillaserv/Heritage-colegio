@@ -1035,6 +1035,189 @@ body {
 }
 
 /* ================================
+   Sección 8 — Noticias y Eventos
+================================ */
+.noticias-eventos-section {
+    background: #f2f3f4;
+    padding: 72px 40px 80px;
+}
+
+.noticias-eventos-header {
+    text-align: center;
+    margin-bottom: 34px;
+}
+
+.noticias-eventos-titulo {
+    margin: 0;
+    color: #0b2332;
+    font-size: clamp(34px, 4vw, 56px);
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.noticias-eventos-grid {
+    max-width: 1220px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+    gap: 26px;
+    align-items: start;
+}
+
+.noticias-eventos-etiqueta {
+    margin: 0 0 16px;
+    color: #8d8d8d;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.noticias-columna {
+    min-width: 0;
+}
+
+.noticia-item {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.9fr) minmax(320px, 1.6fr);
+    margin-bottom: 18px;
+}
+
+.noticia-item:last-child {
+    margin-bottom: 0;
+}
+
+.noticia-item-imagen {
+    background: #d6dde4;
+    min-height: 245px;
+}
+
+.noticia-item-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.noticia-item-contenido {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.noticia-item-titulo {
+    margin: 0 0 10px;
+    color: #0d1e2a;
+    font-size: clamp(24px, 2vw, 32px);
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.noticia-item-descripcion {
+    margin: 0 0 20px;
+    color: #24303a;
+    font-size: clamp(13px, 1.05vw, 16px);
+    line-height: 1.45;
+}
+
+.noticia-item-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #9bd8e7;
+    font-size: clamp(14px, 1vw, 18px);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.noticia-item-link svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+}
+
+.eventos-columna {
+    min-width: 0;
+}
+
+.eventos-lista {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+}
+
+.evento-item {
+    display: grid;
+    grid-template-columns: 70px 1fr 24px;
+    gap: 16px;
+    padding: 20px 18px;
+    border-bottom: 1px solid #e8e8e8;
+    align-items: start;
+}
+
+.evento-item:last-child {
+    border-bottom: none;
+}
+
+.evento-fecha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.evento-mes {
+    display: inline-block;
+    background: #c9b87a;
+    color: #fff;
+    text-transform: lowercase;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+    padding: 6px 10px;
+}
+
+.evento-dia {
+    color: #0b2332;
+    font-size: 34px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+.evento-titulo {
+    margin: 0 0 8px;
+    color: #0d1e2a;
+    font-size: clamp(20px, 1.6vw, 28px);
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.evento-descripcion {
+    margin: 0;
+    color: #24303a;
+    font-size: clamp(13px, 1vw, 15px);
+    line-height: 1.35;
+}
+
+.evento-link {
+    color: #b9b9b9;
+    display: inline-flex;
+    align-self: start;
+    text-decoration: none;
+}
+
+.evento-link svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+}
+
+.evento-link:hover {
+    color: #95c8d8;
+}
+
+/* ================================
    Sección Programas */
 .programs-section {
     min-height: 100vh;
@@ -1589,6 +1772,55 @@ body {
 
     .vida-estudiantil-card-link {
         font-size: 20px;
+    }
+
+    /* Noticias y eventos */
+    .noticias-eventos-section {
+        padding: 56px 20px 60px;
+    }
+
+    .noticias-eventos-header {
+        margin-bottom: 24px;
+    }
+
+    .noticias-eventos-titulo {
+        font-size: 40px;
+    }
+
+    .noticias-eventos-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .noticias-eventos-etiqueta {
+        font-size: 26px;
+        margin-bottom: 12px;
+    }
+
+    .noticia-item {
+        grid-template-columns: 1fr;
+    }
+
+    .noticia-item-imagen {
+        min-height: 220px;
+    }
+
+    .noticia-item-contenido {
+        padding: 20px 18px;
+    }
+
+    .evento-item {
+        grid-template-columns: 62px 1fr 20px;
+        gap: 12px;
+        padding: 16px 14px;
+    }
+
+    .evento-dia {
+        font-size: 26px;
+    }
+
+    .evento-titulo {
+        font-size: 22px;
     }
 
     /* Botón CTA */

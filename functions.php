@@ -678,11 +678,197 @@ function colegio_customize_register( $wp_customize ) {
         ) );
     }
 
+    // ── Sección: Noticias y Eventos ─────────────────────────────────
+    $wp_customize->add_section( 'colegio_inicio_noticias_eventos', array(
+        'title'    => __( 'Sección 8 — Noticias y Eventos', 'colegio-theme' ),
+        'panel'    => 'colegio_panel_inicio',
+        'priority' => 44,
+    ) );
+
+    $wp_customize->add_setting( 'colegio_noticias_eventos_titulo', array(
+        'default'           => 'Noticias y Eventos',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_noticias_eventos_titulo', array(
+        'label'   => __( 'Título de la sección', 'colegio-theme' ),
+        'section' => 'colegio_inicio_noticias_eventos',
+        'type'    => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_noticias_etiqueta', array(
+        'default'           => 'Noticias',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_noticias_etiqueta', array(
+        'label'   => __( 'Etiqueta de columna izquierda', 'colegio-theme' ),
+        'section' => 'colegio_inicio_noticias_eventos',
+        'type'    => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_eventos_etiqueta', array(
+        'default'           => 'Eventos',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_eventos_etiqueta', array(
+        'label'   => __( 'Etiqueta de columna derecha', 'colegio-theme' ),
+        'section' => 'colegio_inicio_noticias_eventos',
+        'type'    => 'text',
+    ) );
+
+    $noticias_defaults = array(
+        1 => array(
+            'titulo'      => 'Título de noticia',
+            'descripcion' => 'El egresado domina el idioma inglés con precisión académica y fluidez social. Es capaz de investigar, redactar y debatir ideas complejas en dos idiomas, permitiéndole navegar con éxito en entornos educativos internacionales.',
+            'boton_texto' => 'Ver Más',
+            'url'         => '#',
+        ),
+        2 => array(
+            'titulo'      => 'Título de noticia',
+            'descripcion' => 'El egresado domina el idioma inglés con precisión académica y fluidez social. Es capaz de investigar, redactar y debatir ideas complejas en dos idiomas, permitiéndole navegar con éxito en entornos educativos internacionales.',
+            'boton_texto' => 'Ver Más',
+            'url'         => '#',
+        ),
+    );
+
+    foreach ( range( 1, 2 ) as $n ) {
+        $wp_customize->add_setting( "colegio_noticia{$n}_imagen", array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        if ( class_exists( 'WP_Customize_Image_Control' ) ) {
+            $wp_customize->add_control( new WP_Customize_Image_Control(
+                $wp_customize,
+                "colegio_noticia{$n}_imagen_control",
+                array(
+                    'label'    => __( "Noticia {$n} — Imagen", 'colegio-theme' ),
+                    'section'  => 'colegio_inicio_noticias_eventos',
+                    'settings' => "colegio_noticia{$n}_imagen",
+                )
+            ) );
+        }
+
+        $wp_customize->add_setting( "colegio_noticia{$n}_titulo", array(
+            'default'           => $noticias_defaults[ $n ]['titulo'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_noticia{$n}_titulo", array(
+            'label'   => __( "Noticia {$n} — Título", 'colegio-theme' ),
+            'section' => 'colegio_inicio_noticias_eventos',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_noticia{$n}_descripcion", array(
+            'default'           => $noticias_defaults[ $n ]['descripcion'],
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ) );
+        $wp_customize->add_control( "colegio_noticia{$n}_descripcion", array(
+            'label'   => __( "Noticia {$n} — Descripción", 'colegio-theme' ),
+            'section' => 'colegio_inicio_noticias_eventos',
+            'type'    => 'textarea',
+        ) );
+
+        $wp_customize->add_setting( "colegio_noticia{$n}_boton_texto", array(
+            'default'           => $noticias_defaults[ $n ]['boton_texto'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_noticia{$n}_boton_texto", array(
+            'label'   => __( "Noticia {$n} — Texto del botón", 'colegio-theme' ),
+            'section' => 'colegio_inicio_noticias_eventos',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_noticia{$n}_url", array(
+            'default'           => $noticias_defaults[ $n ]['url'],
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        $wp_customize->add_control( "colegio_noticia{$n}_url", array(
+            'label'   => __( "Noticia {$n} — URL del botón", 'colegio-theme' ),
+            'section' => 'colegio_inicio_noticias_eventos',
+            'type'    => 'url',
+        ) );
+    }
+
+    $eventos_defaults = array(
+        1 => array(
+            'mes'         => 'mar',
+            'dia'         => '12',
+            'titulo'      => 'Evento 1',
+            'descripcion' => 'Pequeña información del evento.',
+            'url'         => '#',
+        ),
+        2 => array(
+            'mes'         => 'mar',
+            'dia'         => '12',
+            'titulo'      => 'Evento 1',
+            'descripcion' => 'Pequeña información del evento.',
+            'url'         => '#',
+        ),
+        3 => array(
+            'mes'         => 'mar',
+            'dia'         => '12',
+            'titulo'      => 'Evento 1',
+            'descripcion' => 'Pequeña información del evento.',
+            'url'         => '#',
+        ),
+    );
+
+    foreach ( range( 1, 3 ) as $n ) {
+        $wp_customize->add_setting( "colegio_evento{$n}_mes", array(
+            'default'           => $eventos_defaults[ $n ]['mes'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_evento{$n}_mes", array(
+            'label'   => __( "Evento {$n} — Mes corto", 'colegio-theme' ),
+            'section' => 'colegio_inicio_noticias_eventos',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_evento{$n}_dia", array(
+            'default'           => $eventos_defaults[ $n ]['dia'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_evento{$n}_dia", array(
+            'label'   => __( "Evento {$n} — Día", 'colegio-theme' ),
+            'section' => 'colegio_inicio_noticias_eventos',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_evento{$n}_titulo", array(
+            'default'           => $eventos_defaults[ $n ]['titulo'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ) );
+        $wp_customize->add_control( "colegio_evento{$n}_titulo", array(
+            'label'   => __( "Evento {$n} — Título", 'colegio-theme' ),
+            'section' => 'colegio_inicio_noticias_eventos',
+            'type'    => 'text',
+        ) );
+
+        $wp_customize->add_setting( "colegio_evento{$n}_descripcion", array(
+            'default'           => $eventos_defaults[ $n ]['descripcion'],
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ) );
+        $wp_customize->add_control( "colegio_evento{$n}_descripcion", array(
+            'label'   => __( "Evento {$n} — Descripción", 'colegio-theme' ),
+            'section' => 'colegio_inicio_noticias_eventos',
+            'type'    => 'textarea',
+        ) );
+
+        $wp_customize->add_setting( "colegio_evento{$n}_url", array(
+            'default'           => $eventos_defaults[ $n ]['url'],
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        $wp_customize->add_control( "colegio_evento{$n}_url", array(
+            'label'   => __( "Evento {$n} — URL", 'colegio-theme' ),
+            'section' => 'colegio_inicio_noticias_eventos',
+            'type'    => 'url',
+        ) );
+    }
+
     // ── Sección: Programas ──────────────────────────────────────────
     $wp_customize->add_section( 'colegio_inicio_programas', array(
         'title'    => __( 'Sección 9 — Programas', 'colegio-theme' ),
         'panel'    => 'colegio_panel_inicio',
-        'priority' => 45,
+        'priority' => 46,
     ) );
 
     $wp_customize->add_setting( 'colegio_programs_bg', array(

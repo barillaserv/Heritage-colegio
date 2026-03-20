@@ -101,6 +101,68 @@ foreach ( range( 1, 3 ) as $n ) {
     );
 }
 
+$noticias_eventos_titulo   = get_theme_mod( 'colegio_noticias_eventos_titulo', 'Noticias y Eventos' );
+$noticias_etiqueta         = get_theme_mod( 'colegio_noticias_etiqueta', 'Noticias' );
+$eventos_etiqueta          = get_theme_mod( 'colegio_eventos_etiqueta', 'Eventos' );
+$noticias_defaults = array(
+    1 => array(
+        'titulo'      => 'Título de noticia',
+        'descripcion' => 'El egresado domina el idioma inglés con precisión académica y fluidez social. Es capaz de investigar, redactar y debatir ideas complejas en dos idiomas, permitiéndole navegar con éxito en entornos educativos internacionales.',
+        'boton_texto' => 'Ver Más',
+        'url'         => '#',
+    ),
+    2 => array(
+        'titulo'      => 'Título de noticia',
+        'descripcion' => 'El egresado domina el idioma inglés con precisión académica y fluidez social. Es capaz de investigar, redactar y debatir ideas complejas en dos idiomas, permitiéndole navegar con éxito en entornos educativos internacionales.',
+        'boton_texto' => 'Ver Más',
+        'url'         => '#',
+    ),
+);
+$noticias_items = array();
+foreach ( range( 1, 2 ) as $n ) {
+    $noticias_items[] = array(
+        'imagen'      => get_theme_mod( "colegio_noticia{$n}_imagen", '' ),
+        'titulo'      => get_theme_mod( "colegio_noticia{$n}_titulo", $noticias_defaults[ $n ]['titulo'] ),
+        'descripcion' => get_theme_mod( "colegio_noticia{$n}_descripcion", $noticias_defaults[ $n ]['descripcion'] ),
+        'boton_texto' => get_theme_mod( "colegio_noticia{$n}_boton_texto", $noticias_defaults[ $n ]['boton_texto'] ),
+        'url'         => get_theme_mod( "colegio_noticia{$n}_url", $noticias_defaults[ $n ]['url'] ),
+    );
+}
+
+$eventos_defaults = array(
+    1 => array(
+        'mes'         => 'mar',
+        'dia'         => '12',
+        'titulo'      => 'Evento 1',
+        'descripcion' => 'Pequeña información del evento.',
+        'url'         => '#',
+    ),
+    2 => array(
+        'mes'         => 'mar',
+        'dia'         => '12',
+        'titulo'      => 'Evento 1',
+        'descripcion' => 'Pequeña información del evento.',
+        'url'         => '#',
+    ),
+    3 => array(
+        'mes'         => 'mar',
+        'dia'         => '12',
+        'titulo'      => 'Evento 1',
+        'descripcion' => 'Pequeña información del evento.',
+        'url'         => '#',
+    ),
+);
+$eventos_items = array();
+foreach ( range( 1, 3 ) as $n ) {
+    $eventos_items[] = array(
+        'mes'         => get_theme_mod( "colegio_evento{$n}_mes", $eventos_defaults[ $n ]['mes'] ),
+        'dia'         => get_theme_mod( "colegio_evento{$n}_dia", $eventos_defaults[ $n ]['dia'] ),
+        'titulo'      => get_theme_mod( "colegio_evento{$n}_titulo", $eventos_defaults[ $n ]['titulo'] ),
+        'descripcion' => get_theme_mod( "colegio_evento{$n}_descripcion", $eventos_defaults[ $n ]['descripcion'] ),
+        'url'         => get_theme_mod( "colegio_evento{$n}_url", $eventos_defaults[ $n ]['url'] ),
+    );
+}
+
 $programs_bg = get_theme_mod( 'colegio_programs_bg' );
 if ( ! $programs_bg ) {
     $programs_bg = get_template_directory_uri() . '/programs-bg.jpg';
@@ -357,6 +419,59 @@ $info_url      = get_theme_mod( 'colegio_info_url', '#' );
                 </div>
             </article>
         <?php endforeach; ?>
+    </div>
+</section>
+
+<!-- Sección 8: Noticias y Eventos -->
+<section class="noticias-eventos-section">
+    <div class="noticias-eventos-header">
+        <h2 class="noticias-eventos-titulo"><?php echo esc_html( $noticias_eventos_titulo ); ?></h2>
+    </div>
+
+    <div class="noticias-eventos-grid">
+        <div class="noticias-columna">
+            <p class="noticias-eventos-etiqueta"><?php echo esc_html( $noticias_etiqueta ); ?></p>
+
+            <?php foreach ( $noticias_items as $item ) : ?>
+                <article class="noticia-item">
+                    <div class="noticia-item-imagen">
+                        <?php if ( $item['imagen'] ) : ?>
+                            <img src="<?php echo esc_url( $item['imagen'] ); ?>" alt="<?php echo esc_attr( $item['titulo'] ); ?>">
+                        <?php endif; ?>
+                    </div>
+                    <div class="noticia-item-contenido">
+                        <h3 class="noticia-item-titulo"><?php echo esc_html( $item['titulo'] ); ?></h3>
+                        <p class="noticia-item-descripcion"><?php echo esc_html( $item['descripcion'] ); ?></p>
+                        <a class="noticia-item-link" href="<?php echo esc_url( $item['url'] ); ?>">
+                            <?php echo esc_html( $item['boton_texto'] ); ?>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </article>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="eventos-columna">
+            <p class="noticias-eventos-etiqueta"><?php echo esc_html( $eventos_etiqueta ); ?></p>
+
+            <div class="eventos-lista">
+                <?php foreach ( $eventos_items as $evento ) : ?>
+                    <article class="evento-item">
+                        <div class="evento-fecha">
+                            <span class="evento-mes"><?php echo esc_html( $evento['mes'] ); ?></span>
+                            <span class="evento-dia"><?php echo esc_html( $evento['dia'] ); ?></span>
+                        </div>
+                        <div class="evento-contenido">
+                            <h3 class="evento-titulo"><?php echo esc_html( $evento['titulo'] ); ?></h3>
+                            <p class="evento-descripcion"><?php echo esc_html( $evento['descripcion'] ); ?></p>
+                        </div>
+                        <a class="evento-link" href="<?php echo esc_url( $evento['url'] ); ?>" aria-label="Ver evento">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        </a>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        </div>
     </div>
 </section>
 
