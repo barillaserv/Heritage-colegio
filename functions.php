@@ -221,6 +221,125 @@ function colegio_customize_register( $wp_customize ) {
         'type'    => 'url',
     ) );
 
+    // ─── Footer (enlaces + redes) ───────────────────────────────────
+    $wp_customize->add_setting( 'colegio_footer_social_title', array(
+        'default'           => 'SÍGUENOS',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_footer_social_title', array(
+        'label'   => __( 'Texto - Título de redes ("SÍGUENOS")', 'colegio-theme' ),
+        'section' => 'colegio_links',
+        'type'    => 'text',
+    ) );
+
+    // Enlaces del footer
+    $wp_customize->add_setting( 'colegio_footer_nav_campus_label', array(
+        'default'           => 'Campus',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_footer_nav_campus_label', array(
+        'label'   => __( 'Etiqueta - Campus', 'colegio-theme' ),
+        'section' => 'colegio_links',
+        'type'    => 'text',
+    ) );
+    $wp_customize->add_setting( 'colegio_footer_nav_campus_url', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'colegio_footer_nav_campus_url', array(
+        'label'   => __( 'URL - Campus', 'colegio-theme' ),
+        'section' => 'colegio_links',
+        'type'    => 'url',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_footer_nav_admisiones_label', array(
+        'default'           => 'Admisiones',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_footer_nav_admisiones_label', array(
+        'label'   => __( 'Etiqueta - Admisiones', 'colegio-theme' ),
+        'section' => 'colegio_links',
+        'type'    => 'text',
+    ) );
+    $wp_customize->add_setting( 'colegio_footer_nav_admisiones_url', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'colegio_footer_nav_admisiones_url', array(
+        'label'   => __( 'URL - Admisiones', 'colegio-theme' ),
+        'section' => 'colegio_links',
+        'type'    => 'url',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_footer_nav_programas_label', array(
+        'default'           => 'Programas',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_footer_nav_programas_label', array(
+        'label'   => __( 'Etiqueta - Programas', 'colegio-theme' ),
+        'section' => 'colegio_links',
+        'type'    => 'text',
+    ) );
+    $wp_customize->add_setting( 'colegio_footer_nav_programas_url', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'colegio_footer_nav_programas_url', array(
+        'label'   => __( 'URL - Programas', 'colegio-theme' ),
+        'section' => 'colegio_links',
+        'type'    => 'url',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_footer_nav_galeria_label', array(
+        'default'           => 'Galería',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_footer_nav_galeria_label', array(
+        'label'   => __( 'Etiqueta - Galería', 'colegio-theme' ),
+        'section' => 'colegio_links',
+        'type'    => 'text',
+    ) );
+    $wp_customize->add_setting( 'colegio_footer_nav_galeria_url', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'colegio_footer_nav_galeria_url', array(
+        'label'   => __( 'URL - Galería', 'colegio-theme' ),
+        'section' => 'colegio_links',
+        'type'    => 'url',
+    ) );
+
+    // Redes sociales (footer)
+    $wp_customize->add_setting( 'colegio_youtube_url', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'colegio_youtube_url', array(
+        'label'   => __( 'URL - YouTube', 'colegio-theme' ),
+        'section' => 'colegio_links',
+        'type'    => 'url',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_whatsapp_url', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'colegio_whatsapp_url', array(
+        'label'   => __( 'URL - WhatsApp', 'colegio-theme' ),
+        'section' => 'colegio_links',
+        'type'    => 'url',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_linkedin_url', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'colegio_linkedin_url', array(
+        'label'   => __( 'URL - LinkedIn', 'colegio-theme' ),
+        'section' => 'colegio_links',
+        'type'    => 'url',
+    ) );
+
     // ─── Sección: Integración ────────────────────────────────────────
     $wp_customize->add_section(
         'colegio_integraciones',
