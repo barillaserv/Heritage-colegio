@@ -274,17 +274,18 @@ body {
 }
 
 .about-slide-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border-radius: 16px;
-    overflow: hidden;
-    min-height: 380px;
+    position: relative;
+    height: 420px;
 }
 
-/* Imagen */
+/* Imagen — 75% de ancho desde la izquierda */
 .about-slide-img {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75%;
+    height: 100%;
+    border-radius: 16px;
     overflow: hidden;
 }
 
@@ -295,14 +296,22 @@ body {
     display: block;
 }
 
-/* Card de texto */
+/* Card de texto — superpuesta, 80% de alto, centrada verticalmente */
 .about-slide-card {
+    position: absolute;
+    top: 10%;
+    height: 80%;
+    width: 44%;
+    right: 4%;
     background: #f4f6f8;
-    padding: 48px 40px 40px;
+    border-radius: 12px;
+    padding: 36px 36px 28px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: left;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    overflow: hidden;
 }
 
 .about-slide-title {
@@ -381,8 +390,8 @@ body {
     background: #e2e8f0;
     border: none;
     border-radius: 50px;
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 36px;
     font-size: 13px;
     font-weight: 700;
     color: #aaa;
@@ -678,11 +687,12 @@ body {
     }
 
     .about-slide-inner {
-        grid-template-columns: 1fr;
+        height: 360px;
     }
 
-    .about-slide-img {
-        min-height: 260px;
+    .about-slide-card {
+        width: 52%;
+        padding: 28px 24px;
     }
 
     .programs-container {
@@ -791,22 +801,19 @@ body {
     }
 
     .about-slide-inner {
-        grid-template-columns: 1fr;
-        min-height: auto;
-    }
-
-    .about-slide-img {
-        min-height: 220px;
+        height: 320px;
     }
 
     .about-slide-card {
-        padding: 32px 24px;
+        width: 65%;
+        right: 3%;
+        padding: 24px 20px;
     }
 
     .about-dot {
-        width: 36px;
-        height: 36px;
-        font-size: 12px;
+        width: 44px;
+        height: 30px;
+        font-size: 11px;
     }
 
     /* Programas */
