@@ -5,17 +5,7 @@
     $whatsapp_url  = get_theme_mod( 'colegio_whatsapp_url', '#' );
     $linkedin_url  = get_theme_mod( 'colegio_linkedin_url', '#' );
 
-    $social_title  = get_theme_mod( 'colegio_footer_social_title', 'SÍGUENOS' );
-
-    $campus_label      = get_theme_mod( 'colegio_footer_nav_campus_label', 'Campus' );
-    $campus_url        = get_theme_mod( 'colegio_footer_nav_campus_url', '#' );
-    $admisiones_label  = get_theme_mod( 'colegio_footer_nav_admisiones_label', 'Admisiones' );
-    $admisiones_url    = get_theme_mod( 'colegio_footer_nav_admisiones_url', '#' );
-    $programas_label   = get_theme_mod( 'colegio_footer_nav_programas_label', 'Programas' );
-    $programas_url     = get_theme_mod( 'colegio_footer_nav_programas_url', '#' );
-    $galeria_label     = get_theme_mod( 'colegio_footer_nav_galeria_label', 'Galería' );
-    $galeria_url       = get_theme_mod( 'colegio_footer_nav_galeria_url', '#' );
-
+    $social_title   = get_theme_mod( 'colegio_footer_social_title', 'SÍGUENOS' );
     $custom_logo_id = get_theme_mod( 'custom_logo' );
 ?>
     <footer class="site-footer">
@@ -37,12 +27,16 @@
 
             <div class="site-footer-divider"></div>
 
-            <nav class="site-footer-nav" aria-label="Enlaces del pie">
-                <a href="<?php echo esc_url( $campus_url ); ?>" class="site-footer-nav-link"><?php echo esc_html( $campus_label ); ?></a>
-                <a href="<?php echo esc_url( $admisiones_url ); ?>" class="site-footer-nav-link"><?php echo esc_html( $admisiones_label ); ?></a>
-                <a href="<?php echo esc_url( $programas_url ); ?>" class="site-footer-nav-link"><?php echo esc_html( $programas_label ); ?></a>
-                <a href="<?php echo esc_url( $galeria_url ); ?>" class="site-footer-nav-link"><?php echo esc_html( $galeria_label ); ?></a>
-            </nav>
+            <?php
+            wp_nav_menu( array(
+                'theme_location' => 'footer-menu',
+                'container'      => 'nav',
+                'container_class'=> 'site-footer-nav',
+                'menu_class'     => 'site-footer-nav-list',
+                'fallback_cb'    => false,
+                'depth'          => 1,
+            ) );
+            ?>
 
             <div class="site-footer-divider"></div>
 

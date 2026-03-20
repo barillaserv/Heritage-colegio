@@ -34,6 +34,10 @@ function colegio_theme_setup() {
         'flex-height' => true,
         'flex-width'  => true,
     ));
+    register_nav_menus( array(
+        'header-menu' => __( 'Menú Principal (Header)', 'colegio-theme' ),
+        'footer-menu' => __( 'Menú Footer', 'colegio-theme' ),
+    ) );
 }
 add_action('after_setup_theme', 'colegio_theme_setup');
 
@@ -161,36 +165,6 @@ function colegio_customize_register( $wp_customize ) {
         'panel'       => 'colegio_panel',
         'priority'    => 30,
     ) );
-
-    // — Menú del footer —
-    $footer_nav_items = array(
-        'campus'      => 'Campus',
-        'admisiones'  => 'Admisiones',
-        'programas'   => 'Programas',
-        'galeria'     => 'Galería',
-    );
-
-    foreach ( $footer_nav_items as $key => $default_label ) {
-        $wp_customize->add_setting( "colegio_footer_nav_{$key}_label", array(
-            'default'           => $default_label,
-            'sanitize_callback' => 'sanitize_text_field',
-        ) );
-        $wp_customize->add_control( "colegio_footer_nav_{$key}_label", array(
-            'label'   => sprintf( __( 'Menú — Texto "%s"', 'colegio-theme' ), $default_label ),
-            'section' => 'colegio_footer',
-            'type'    => 'text',
-        ) );
-
-        $wp_customize->add_setting( "colegio_footer_nav_{$key}_url", array(
-            'default'           => '#',
-            'sanitize_callback' => 'esc_url_raw',
-        ) );
-        $wp_customize->add_control( "colegio_footer_nav_{$key}_url", array(
-            'label'   => sprintf( __( 'Menú — URL "%s"', 'colegio-theme' ), $default_label ),
-            'section' => 'colegio_footer',
-            'type'    => 'url',
-        ) );
-    }
 
     // — Redes sociales —
     $wp_customize->add_setting( 'colegio_footer_social_title', array(

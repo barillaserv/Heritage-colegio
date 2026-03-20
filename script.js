@@ -8,6 +8,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ── Menú hamburguesa (móvil) ──────────────────────────
+    const navToggle = document.getElementById('navToggle');
+    const headerNav = document.getElementById('headerNav');
+
+    if (navToggle && headerNav) {
+        navToggle.addEventListener('click', function() {
+            const isOpen = headerNav.classList.toggle('is-open');
+            navToggle.classList.toggle('is-active', isOpen);
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Cerrar al hacer clic en un enlace del menú
+        headerNav.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                headerNav.classList.remove('is-open');
+                navToggle.classList.remove('is-active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Cerrar al hacer clic fuera del menú
+        document.addEventListener('click', function(e) {
+            if (!header.contains(e.target)) {
+                headerNav.classList.remove('is-open');
+                navToggle.classList.remove('is-active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
     // ── Formulario de contacto → Zapier ──────────────────
     const form = document.getElementById('contactForm');
     if (!form) return;

@@ -24,7 +24,25 @@
                 }
                 ?>
             </div>
-            <div class="header-button">
+
+            <?php
+            wp_nav_menu( array(
+                'theme_location' => 'header-menu',
+                'container'      => 'nav',
+                'container_class'=> 'header-nav',
+                'container_id'   => 'headerNav',
+                'menu_class'     => 'header-nav-list',
+                'fallback_cb'    => false,
+                'depth'          => 1,
+            ) );
+            ?>
+
+            <div class="header-right">
+                <button class="nav-toggle" id="navToggle" aria-label="<?php esc_attr_e( 'Abrir menú', 'colegio-theme' ); ?>" aria-expanded="false" aria-controls="headerNav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <a href="<?php echo esc_url( $contactanos_url ); ?>" class="btn-contactanos">Contáctanos</a>
             </div>
         </div>
