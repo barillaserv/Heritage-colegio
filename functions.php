@@ -962,6 +962,75 @@ function colegio_customize_register( $wp_customize ) {
         'type'    => 'textarea',
     ) );
 
+    // ── Sección 2: Sobre nosotros (tarjeta única) ─────────────────
+    $wp_customize->add_section( 'colegio_me_s2_sobre', array(
+        'title'    => __( 'Sección 2 — Sobre nosotros', 'colegio-theme' ),
+        'panel'    => 'colegio_panel_modelo_educativo',
+        'priority' => 20,
+    ) );
+
+    $wp_customize->add_setting( 'colegio_me_s2_titulo', array(
+        'default'           => 'Heritage American School',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_me_s2_titulo', array(
+        'label'   => __( 'Título de la sección', 'colegio-theme' ),
+        'section' => 'colegio_me_s2_sobre',
+        'type'    => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_me_s2_descripcion', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ) );
+    $wp_customize->add_control( 'colegio_me_s2_descripcion', array(
+        'label'   => __( 'Descripción de la sección', 'colegio-theme' ),
+        'section' => 'colegio_me_s2_sobre',
+        'type'    => 'textarea',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_me_s2_slide1_imagen', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    if ( class_exists( 'WP_Customize_Image_Control' ) ) {
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'colegio_me_s2_slide1_imagen_control', array(
+            'label'    => __( 'Tarjeta — Imagen', 'colegio-theme' ),
+            'section'  => 'colegio_me_s2_sobre',
+            'settings' => 'colegio_me_s2_slide1_imagen',
+        ) ) );
+    }
+
+    $wp_customize->add_setting( 'colegio_me_s2_slide1_titulo', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_me_s2_slide1_titulo', array(
+        'label'   => __( 'Tarjeta — Título', 'colegio-theme' ),
+        'section' => 'colegio_me_s2_sobre',
+        'type'    => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_me_s2_slide1_descripcion', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ) );
+    $wp_customize->add_control( 'colegio_me_s2_slide1_descripcion', array(
+        'label'   => __( 'Tarjeta — Descripción', 'colegio-theme' ),
+        'section' => 'colegio_me_s2_sobre',
+        'type'    => 'textarea',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_me_s2_slide1_url', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'colegio_me_s2_slide1_url', array(
+        'label'   => __( 'Tarjeta — URL de la flecha', 'colegio-theme' ),
+        'section' => 'colegio_me_s2_sobre',
+        'type'    => 'url',
+    ) );
+
     // ════════════════════════════════════════════════════════════════
     // PANEL: Página de Contacto  (template: page-contacto.php)
     // ════════════════════════════════════════════════════════════════

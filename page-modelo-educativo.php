@@ -61,13 +61,67 @@
                     </div>
                 </section>
 
-                <!-- Secciones adicionales: añadir aquí -->
+                <?php if ( get_the_content() ) : ?>
+                <div class="me-content">
+                    <?php the_content(); ?>
+                </div>
+                <?php endif; ?>
+
+                <?php
+                // ── Sección 2: Sobre nosotros (tarjeta única) ───────
+                $me_s2_titulo      = get_theme_mod( 'colegio_me_s2_titulo', 'Heritage American School' );
+                $me_s2_descripcion = get_theme_mod( 'colegio_me_s2_descripcion', '' );
+                $me_s2_card        = array(
+                    'imagen'      => get_theme_mod( 'colegio_me_s2_slide1_imagen', '' ),
+                    'titulo'      => get_theme_mod( 'colegio_me_s2_slide1_titulo', '' ),
+                    'descripcion' => get_theme_mod( 'colegio_me_s2_slide1_descripcion', '' ),
+                    'url'         => get_theme_mod( 'colegio_me_s2_slide1_url', '#' ),
+                );
+                $me_s2_card_visible = ! empty( $me_s2_card['imagen'] ) || ! empty( $me_s2_card['titulo'] ) || ! empty( $me_s2_card['descripcion'] );
+                if ( $me_s2_titulo || $me_s2_descripcion || $me_s2_card_visible ) :
+                ?>
+                <section class="about-section me-s2-single">
+                    <div class="about-header">
+                        <?php if ( $me_s2_titulo ) : ?>
+                        <h2 class="section-title"><?php echo esc_html( $me_s2_titulo ); ?></h2>
+                        <?php endif; ?>
+                        <?php if ( $me_s2_descripcion ) : ?>
+                        <p class="section-description"><?php echo esc_html( $me_s2_descripcion ); ?></p>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php if ( $me_s2_card_visible ) : ?>
+                    <div class="about-slider-wrapper">
+                        <div class="about-slider">
+                            <div class="about-slide active">
+                                <div class="about-slide-inner">
+                                    <?php if ( $me_s2_card['imagen'] ) : ?>
+                                    <div class="about-slide-img">
+                                        <img src="<?php echo esc_url( $me_s2_card['imagen'] ); ?>" alt="<?php echo esc_attr( $me_s2_card['titulo'] ); ?>">
+                                    </div>
+                                    <?php endif; ?>
+                                    <div class="about-slide-card">
+                                        <?php if ( $me_s2_card['titulo'] ) : ?>
+                                        <h3 class="about-slide-title"><?php echo esc_html( $me_s2_card['titulo'] ); ?></h3>
+                                        <?php endif; ?>
+                                        <?php if ( $me_s2_card['descripcion'] ) : ?>
+                                        <p class="about-slide-desc"><?php echo esc_html( $me_s2_card['descripcion'] ); ?></p>
+                                        <?php endif; ?>
+                                        <a href="<?php echo esc_url( $me_s2_card['url'] ); ?>" class="about-slide-arrow" aria-label="Ver más">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                </section>
+                <?php endif; ?>
                 <?php
             endwhile;
             ?>
         </div>
     </main>
 
-    <?php wp_footer(); ?>
-</body>
-</html>
+    <?php get_footer(); ?>

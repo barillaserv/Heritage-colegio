@@ -2408,3 +2408,77 @@ body.page-modelo-educativo .main-header {
         font-size: 24px;
     }
 }
+
+/* ── Contenido de la página (editor de WordPress) ── */
+.me-content {
+    max-width: 75%;
+    margin: 0 auto;
+    padding: 60px 0 80px;
+    font-family: var(--colegio-font-sans);
+    font-size: 17px;
+    color: #222;
+    line-height: 1.75;
+}
+
+.me-content h1,
+.me-content h2,
+.me-content h3,
+.me-content h4 {
+    color: #0a1e2e;
+    font-family: var(--colegio-font-sans);
+    line-height: 1.2;
+    margin-top: 2.2em;
+    margin-bottom: 0.4em;
+}
+
+.me-content h2 { font-size: 36px; font-weight: 800; }
+.me-content h3 { font-size: 22px; font-weight: 700; }
+.me-content h4 { font-size: 18px; font-weight: 700; }
+
+.me-content p {
+    margin-bottom: 1.1em;
+}
+
+.me-content ul,
+.me-content ol {
+    padding-left: 1.5em;
+    margin-bottom: 1.25em;
+}
+
+.me-content li {
+    margin-bottom: 0.4em;
+}
+
+.me-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5em 0;
+}
+
+.me-content a {
+    color: var(--colegio-section-title-color, #1a365d);
+    text-decoration: underline;
+}
+
+.me-content strong {
+    color: #0a1e2e;
+    font-weight: 700;
+}
+
+@media (max-width: 960px) {
+    .me-content {
+        max-width: 90%;
+        padding: 48px 0 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .me-content {
+        max-width: 100%;
+        padding: 36px 20px 50px;
+    }
+
+    .me-content h2 { font-size: 26px; }
+    .me-content h3 { font-size: 19px; }
+}
