@@ -916,6 +916,53 @@ function colegio_customize_register( $wp_customize ) {
     ) );
 
     // ════════════════════════════════════════════════════════════════
+    // PANEL: Modelo Educativo  (template: page-modelo-educativo.php)
+    // ════════════════════════════════════════════════════════════════
+    $wp_customize->add_panel( 'colegio_panel_modelo_educativo', array(
+        'title'    => __( 'Página de Modelo Educativo', 'colegio-theme' ),
+        'priority' => 25,
+    ) );
+
+    // ── Sección 1: Hero ─────────────────────────────────────────────
+    $wp_customize->add_section( 'colegio_me_s1_hero', array(
+        'title'    => __( 'Sección 1 — Hero', 'colegio-theme' ),
+        'panel'    => 'colegio_panel_modelo_educativo',
+        'priority' => 10,
+    ) );
+
+    $wp_customize->add_setting( 'colegio_me_s1_imagen', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    if ( class_exists( 'WP_Customize_Image_Control' ) ) {
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'colegio_me_s1_imagen_control', array(
+            'label'    => __( 'Imagen de fondo', 'colegio-theme' ),
+            'section'  => 'colegio_me_s1_hero',
+            'settings' => 'colegio_me_s1_imagen',
+        ) ) );
+    }
+
+    $wp_customize->add_setting( 'colegio_me_s1_titulo', array(
+        'default'           => 'Nuestro Modelo Educativo Internacional',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'colegio_me_s1_titulo', array(
+        'label'   => __( 'Título', 'colegio-theme' ),
+        'section' => 'colegio_me_s1_hero',
+        'type'    => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'colegio_me_s1_subtitulo', array(
+        'default'           => 'Para asegurar un desarrollo cognitivo integral, distribuimos nuestra carga académica de la siguiente manera:',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ) );
+    $wp_customize->add_control( 'colegio_me_s1_subtitulo', array(
+        'label'   => __( 'Subtítulo', 'colegio-theme' ),
+        'section' => 'colegio_me_s1_hero',
+        'type'    => 'textarea',
+    ) );
+
+    // ════════════════════════════════════════════════════════════════
     // PANEL: Página de Contacto  (template: page-contacto.php)
     // ════════════════════════════════════════════════════════════════
     $wp_customize->add_panel( 'colegio_panel_contacto', array(

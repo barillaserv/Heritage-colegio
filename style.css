@@ -2319,3 +2319,92 @@ body.page-contacto .main-header {
         gap: 10px;
     }
 }
+
+/* ================================
+   Página Modelo Educativo
+================================ */
+
+body.page-modelo-educativo {
+    background: #eef2f7;
+    font-family: var(--colegio-font-sans);
+}
+
+body.page-modelo-educativo .main-header {
+    background: #fff;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.modelo-educativo-page {
+    min-height: 100vh;
+    background: #fff;
+    font-family: var(--colegio-font-sans);
+}
+
+.modelo-educativo-wrapper {
+    max-width: 100%;
+    width: 100%;
+}
+
+/* ── Sección 1: Hero ── */
+.me-hero {
+    width: 100%;
+}
+
+.me-hero__img {
+    display: block;
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.me-hero__card {
+    position: relative;
+    z-index: 2;
+    margin-top: -100px;
+    margin-left: 48px;
+    margin-right: auto;
+    background: #fff;
+    padding: 44px 52px;
+    max-width: 720px;
+    width: calc(70% - 48px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+}
+
+.me-hero__titulo {
+    font-family: var(--colegio-font-sans);
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--colegio-section-title-color, #1a365d);
+    line-height: 1.2;
+    margin: 0 0 14px;
+}
+
+.me-hero__subtitulo {
+    font-family: var(--colegio-font-sans);
+    font-size: var(--colegio-body-size, 16px);
+    color: var(--colegio-intro-color, #4a5568);
+    line-height: var(--colegio-body-lh, 1.6);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .me-hero__img {
+        height: 260px;
+    }
+
+    .me-hero__card {
+        margin-top: -60px;
+        margin-left: 16px;
+        margin-right: 16px;
+        width: auto;
+        padding: 28px 24px;
+    }
+
+    .me-hero__titulo {
+        font-size: 24px;
+    }
+}
